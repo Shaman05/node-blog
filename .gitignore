@@ -1,0 +1,8 @@
+*.swp
+*.bak
+*~
+~*
+*Thumbs.db
+*.tar.gz
+logs/*
+.idea
