@@ -1,4 +1,4 @@
-node-blog: 我的node博客
+node-blog: Nodejser Blog
 version: 1.0
 =========
 使用技术：
