@@ -37,3 +37,11 @@ exports.artShow = function(req, res){
         }
     });
 };
+
+exports.ad_index = function(req, res){};
+
+exports.ad_article = function(req, res){};
+
+exports.ad_article_add = function(req, res){};
+
+exports.ad_article_edit = function(req, res){};
