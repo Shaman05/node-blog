@@ -1,8 +1,14 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
+@charset 'utf-8';
+html,body{height:100%;}
+body{font:12px/18px "微软雅黑","Lucida Grande",Helvetica,Arial,sans-serif}
+body,h1,h2,h3,ul,li,dl,dt{margin:0;}
 
-a {
-  color: #00B7FF;
-}
+.wrap{min-height:100%;position:relative;}
+.content{padding-bottom:59px}
+header,section,footer p{padding-left:20px}
+header{height:64px;border-bottom:1px solid #CCCCCC;}
+h1{font-size:24px;}
+.desc{font-size:12px;font-weight:normal;margin-left:6px}
+
+
+footer{width:100%;height:59px;border-top:1px solid #CCCCCC;position:absolute;bottom:0;}

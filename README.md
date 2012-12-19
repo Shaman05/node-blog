@@ -9,5 +9,6 @@ nodejs + express + mongodb , 模板引擎使用jade
 
 路由规划：
 主页 /home (/)
+关于 /about
 文章列表 /article
 文章详细 /article/id
