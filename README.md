@@ -1,5 +1,5 @@
 node-blog: Nodejser Blog
-version: 1.0
+version: 0.1
 =========
 使用技术：
 
