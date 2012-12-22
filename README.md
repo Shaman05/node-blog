@@ -7,7 +7,7 @@ version: 0.1
 
 功能：
 
-  该版本主要实现博客的核心功能： 文章发布
+  version0.1 : 主要实现博客的核心功能： 文章发布
 
 路由规划：
 
@@ -19,7 +19,7 @@ version: 0.1
 
   		文章列表 /article
 
-		文章详细 /article/id
+		文章详细 /article/:id
 
 	后台管理：
 	
@@ -27,6 +27,4 @@ version: 0.1
 		
 		文章列表（删除) /admin/article
 		
-		文章添加 /admin/article_add
-
-		文章编辑 /admin/article_edit/id 
+		编辑文章 /admin/article_add , /admin/article_edit/:id
