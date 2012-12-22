@@ -5,20 +5,21 @@
  * ...待添加
  */
 
+var db = require('./db');
+
 module.exports = {
-  artList : function(){
-    return [
-      { 
-        id: '1',
-        title: 'test111111'
-      },
-      { 
-        id: '2',
-        title: 'test22222222222'
-      }
-    ];
-  },
-  artShow : function(req){
-    return req.params.id;
-  }    
+    artList:function(callback){
+        db.open(function(){
+            db.collection('article', function(err, collection){
+                collection.find({},function(err, cursor){
+                    cursor.toArray(function(err,items){
+                        callback(err, items, db);
+                    });
+                });
+            });
+        });
+    },
+    artShow:function(req){
+        return req.params.id;
+    }
 }

@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h3 文章管理列表
+  .toolbar
+    a.btn.btn-green(href='./article_edit') 添加文章
+  ul.list
+    for article in dataList
+      li 标题：#{article.title}
+        a(href='./article_edit/#{article._id}') 编辑
+        a(href='./article_delete/#{article._id}') 删除
+    else
+      li no article.
