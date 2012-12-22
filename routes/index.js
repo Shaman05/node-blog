@@ -7,6 +7,7 @@
  */
 
 var article = require('../models/article');
+var ajax = require('../models/ajaxApi');
 
 exports.index = function(req, res){
     res.render('index', {
@@ -21,22 +22,21 @@ exports.about = function(req, res){
 }
 
 exports.artList = function(req, res){
-    article.artList(function(err, data, db){
+    article.artList(function(err, data){
         res.render('article', {
             title: '文章列表'
             ,dataList : data
         });
-        db.close();
     });
 };
 
 exports.artShow = function(req, res){
-    var pageData = article.artShow(req);
-    res.render('article_show', {
-        title: '文章详细',
-        article: {
-            id: pageData
-        }
+    var aid = req.params.id;
+    article.artGet(aid, function(err, data){
+        res.render('article_show', {
+            title: '文章详细',
+            article: data
+        });
     });
 };
 
@@ -47,20 +47,41 @@ exports.ad_index = function(req, res){
 };
 
 exports.ad_article = function(req, res){
-    article.artList(function(err, data, db){
+    article.artList(function(err, data){
         res.render('admin/ad_article', {
-            title: '文章管理列表'
-            ,dataList : data
+            title: '文章管理列表',
+            dataList : data
         });
-        db.close();
     });
 };
 
 exports.ad_article_edit = function(req, res){
-    var aid = article.artShow(req);
+    var aid = req.params.id || null;
+    var act = 'add';
     var title = '添加文章';
-    title = aid ? '编辑文章' : title;
-    res.render('admin/ad_article_edit', {
-        title: title
+    if(aid){
+        act = 'edit';
+        title = '编辑文章';
+    }
+    article.artGet(aid, function(err, data){
+        res.render('admin/ad_article_edit', {
+            title: title,
+            act: act,
+            article: data
+        });
     });
 };
+
+exports.artDel = function(req, res){
+    var aid = req.params.id || null;
+    ajax.artDel(aid, function(err, resJson){
+        res.json(resJson);
+    });
+}
+
+exports.artAdd = function(req, res){
+    var data = req.body;
+    ajax.artAdd(data, function(err, resJson){
+        res.json(resJson);
+    });
+}

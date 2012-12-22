@@ -4,7 +4,7 @@
  * 2.指定id文章的内容获取；
  * ...待添加
  */
-
+var mongo = require('../node_modules/mongodb');
 var db = require('./db');
 
 module.exports = {
@@ -13,13 +13,28 @@ module.exports = {
             db.collection('article', function(err, collection){
                 collection.find({},function(err, cursor){
                     cursor.toArray(function(err,items){
-                        callback(err, items, db);
+                        callback(err, items);
+                        db.close();
                     });
                 });
             });
         });
     },
-    artShow:function(req){
-        return req.params.id;
+
+    artGet:function(aid, callback){
+        if(!aid){  //添加新文章
+            callback();
+            return;
+        }else{  //获取文章信息
+            var _aid = new mongo.ObjectID(aid);
+            db.open(function(){
+                db.collection('article', function(err, collection){
+                    collection.findOne({'_id':_aid}, function(err, data){
+                        callback(err, data);
+                        db.close();
+                    });
+                });
+            });
+        }
     }
 }

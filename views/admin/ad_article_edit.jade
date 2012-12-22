@@ -1,4 +1,41 @@
 extends layout
 
 block content
-  h3= title
+  section.artile-edit
+    if act == 'edit'
+      p edit
+      .row
+        span 标题：
+        input#title(type='text',value='#{article.title}')
+      .row
+        span 分类：
+        select#category
+          option(selected) 未分类
+      .row
+        span 标签：
+        input#tags(type='text',value='#{article.tags}')
+      .row
+        span 内容：
+        textarea#content #{article.content}
+      .row
+        span &nbsp;
+        a.btn.blue(href='javascript:') 确定
+    else
+      p add
+      .row
+        span 标题：
+        input#title(type='text')
+      .row
+        span 分类：
+        select#category
+          option(selected) 未分类
+      .row
+        span 标签：
+        input#tags(type='text')
+      .row
+        span 内容：
+        textarea#content
+      .row
+        span &nbsp;
+        a#art-addBtn.btn.blue(href='javascript:') 确定
+        a.btn.gray(href='javascript:') 重置

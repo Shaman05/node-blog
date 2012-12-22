@@ -35,6 +35,8 @@ app.get('/admin', routes.ad_index);
 app.get('/admin/article', routes.ad_article);
 app.get('/admin/article_edit', routes.ad_article_edit);
 app.get('/admin/article_edit/:id', routes.ad_article_edit);
+app.get('/ajax/article_del/:id', routes.artDel);
+app.post('/ajax/article_add', routes.artAdd);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
