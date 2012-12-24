@@ -77,12 +77,15 @@ exports.ad_article_edit = function(req, res){
 //ajax api
 exports.login = function(req, res){
     ajax.login(req.body, function(resJson){
+        if(resJson.state == 'success'){
+            //req.session.user = req.body.user;
+        }
         res.json(resJson);
     });
 };
 
 exports.artDel = function(req, res){
-    var aid = req.params.id || null;
+    var aid = req.body.aid || null;
     ajax.artDel(aid, function(resJson){
         res.json(resJson);
     });
@@ -93,3 +96,10 @@ exports.artEdit = function(req, res){
         res.json(resJson);
     });
 };
+
+exports.checkLogin = function(req, res, next){
+    if(!req.session){
+        return res.redirect('/');
+    }
+    next();
+}

@@ -15,6 +15,8 @@ define(function(require, exports, module){
         events: function(){
             $('#login').fancybox();
             $('#loginBtn').click(function(){
+                var tipsBox = $('#loginTips');
+                tipsBox.hide();
                 var userData = {
                     name: $('#userName').val(),
                     password: $('#password').val()
@@ -22,6 +24,8 @@ define(function(require, exports, module){
                 $.post('/ajax/login', userData, function(data){
                     if(data.state == 'success')
                         window.location.href = '/admin';
+                    else
+                        tipsBox.html(data.message).fadeIn(500);
                 });
             });
         }
