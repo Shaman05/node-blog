@@ -78,7 +78,8 @@ exports.ad_article_edit = function(req, res){
 exports.login = function(req, res){
     ajax.login(req.body, function(resJson){
         if(resJson.state == 'success'){
-            //req.session.user = req.body.user;
+            //写入session
+            console.log(req.session); //undefined
         }
         res.json(resJson);
     });
@@ -98,8 +99,8 @@ exports.artEdit = function(req, res){
 };
 
 exports.checkLogin = function(req, res, next){
-    if(!req.session){
+    if(!req.session.user){
         return res.redirect('/');
     }
     next();
-}
+};

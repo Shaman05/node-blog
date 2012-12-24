@@ -20,6 +20,7 @@ app.configure(function(){
     app.use(express.methodOverride());
     app.use(app.router);
     app.use(express.static(path.join(__dirname, 'public')));
+    app.use(express.cookieParser());
     app.use(express.session({
         secret: setting.cookieSecret,
         cookie: new Date(Date.now() + 2 * 60 * 60),
@@ -42,13 +43,13 @@ app.get('/article', routes.artList);
 app.get('/article/:id', routes.artShow);
 
 //admin routes
-app.get('/admin', routes.checkLogin);
+//app.get('/admin', routes.checkLogin);
 app.get('/admin', routes.ad_index);
-app.get('/admin/article', routes.checkLogin);
+//app.get('/admin/article', routes.checkLogin);
 app.get('/admin/article', routes.ad_article);
-app.get('/admin/article_edit', routes.checkLogin);
+//app.get('/admin/article_edit', routes.checkLogin);
 app.get('/admin/article_edit', routes.ad_article_edit);
-app.get('/admin/article_edit/:id', routes.checkLogin);
+//app.get('/admin/article_edit/:id', routes.checkLogin);
 app.get('/admin/article_edit/:id', routes.ad_article_edit);
 
 //ajax routes
