@@ -26,17 +26,29 @@ module.exports = {
         });
     },
 
-    artAdd: function(data, callback){
+    artEdit: function(data, callback){
         db.open(function(){
             db.collection('article', function(err, collection){
-               collection.insert(data, function(err){
-                   var resJson = {
-                       data: data,
-                       message: 'success!'
-                   };
-                   callback(err, resJson);
-                   db.close();
-               })
+                if(!data.aid){
+                    collection.insert(data, function(err){
+                        callback(err ? {state:'failed!', message:err} : {state:'success!', data:data});
+                    })
+                }else{
+                    var _aid = new mongo.ObjectID(data.aid);
+                    collection.update(
+                        {'_id':_aid},
+                        {$set:{
+                            title: data.title,
+                            catogery: data.catogery,
+                            tags: data.tags,
+                            content: data.content
+                        }},
+                        function(err){
+                            callback(err ? {state:'failed!', message:err} : {state:'success!', data:data});
+                        }
+                    );
+                }
+                db.close();
             });
         });
     }

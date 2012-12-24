@@ -8,7 +8,7 @@ var mongo = require('../node_modules/mongodb');
 var db = require('./db');
 
 module.exports = {
-    artList:function(callback, sortBy){
+    artList:function(sortBy, callback){
         db.open(function(){
             db.collection('article', function(err, collection){
                 collection.find({},function(err, cursor){

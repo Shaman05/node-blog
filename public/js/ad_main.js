@@ -22,14 +22,15 @@ define(function(require, exports, module){
                 }
             });
 
-            $('#art-addBtn').click(function(){
+            $('#art-editBtn').click(function(){
                 var postData = {
+                    aid: $('#aid').val(),
                     title: $('#title').val(),
                     category: 'css',
                     tags: $('#tags').val(),
                     content: $('#content').val()
                 }
-                $.post('/ajax/article_add', postData, function(data){
+                $.post('/ajax/article_edit', postData, function(data){
                     console.log(data);
                 });
             });

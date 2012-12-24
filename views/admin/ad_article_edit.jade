@@ -7,6 +7,7 @@ block content
       .row
         span 标题：
         input#title(type='text',value='#{article.title}')
+        input#aid(type='hidden',value='#{article._id}')
       .row
         span 分类：
         select#category
@@ -19,7 +20,7 @@ block content
         textarea#content #{article.content}
       .row
         span &nbsp;
-        a.btn.blue(href='javascript:') 确定
+        a#art-editBtn.btn.blue(href='javascript:') 确定
     else
       p add
       .row
@@ -37,5 +38,5 @@ block content
         textarea#content
       .row
         span &nbsp;
-        a#art-addBtn.btn.blue(href='javascript:') 确定
+        a#art-editBtn.btn.blue(href='javascript:') 确定
         a.btn.gray(href='javascript:') 重置

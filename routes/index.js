@@ -22,7 +22,8 @@ exports.about = function(req, res){
 }
 
 exports.artList = function(req, res){
-    article.artList(function(err, data){
+    var sortBy = '_id';
+    article.artList(sortBy, function(err, data){
         res.render('article', {
             title: '文章列表'
             ,dataList : data
@@ -47,7 +48,8 @@ exports.ad_index = function(req, res){
 };
 
 exports.ad_article = function(req, res){
-    article.artList(function(err, data){
+    var sortBy = '_id';
+    article.artList(sortBy, function(err, data){
         res.render('admin/ad_article', {
             title: '文章管理列表',
             dataList : data
@@ -74,14 +76,14 @@ exports.ad_article_edit = function(req, res){
 
 exports.artDel = function(req, res){
     var aid = req.params.id || null;
-    ajax.artDel(aid, function(err, resJson){
+    ajax.artDel(aid, function(resJson){
         res.json(resJson);
     });
 }
 
-exports.artAdd = function(req, res){
+exports.artEdit = function(req, res){
     var data = req.body;
-    ajax.artAdd(data, function(err, resJson){
+    ajax.artEdit(data, function(resJson){
         res.json(resJson);
     });
 }
