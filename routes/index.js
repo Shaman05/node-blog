@@ -74,16 +74,22 @@ exports.ad_article_edit = function(req, res){
     });
 };
 
+//ajax api
+exports.login = function(req, res){
+    ajax.login(req.body, function(resJson){
+        res.json(resJson);
+    });
+};
+
 exports.artDel = function(req, res){
     var aid = req.params.id || null;
     ajax.artDel(aid, function(resJson){
         res.json(resJson);
     });
-}
+};
 
 exports.artEdit = function(req, res){
-    var data = req.body;
-    ajax.artEdit(data, function(resJson){
+    ajax.artEdit(req.body, function(resJson){
         res.json(resJson);
     });
-}
+};

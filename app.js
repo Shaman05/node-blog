@@ -46,6 +46,7 @@ app.get('/admin/article_edit', routes.ad_article_edit);
 app.get('/admin/article_edit/:id', routes.ad_article_edit);
 
 //ajax routes
+app.post('/ajax/login', routes.login);
 app.get('/ajax/article_del/:id', routes.artDel);
 app.post('/ajax/article_edit', routes.artEdit);
 

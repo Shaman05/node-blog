@@ -8,18 +8,46 @@
 
 var mongo = require('../node_modules/mongodb');
 var db = require('./db');
+var crypto = require('crypto');
 
 module.exports = {
+    login: function(user, callback){
+        var md5 = crypto.createHash('md5');
+        var name = user.name;
+        var pwd =  md5.update(user.password).digest('base64');
+        db.open(function(){
+            db.collection('users', function(err, collection){
+                collection.findOne({'name':name}, function(err, data){
+                    var resJson = {
+                        state: 'failed'
+                    };
+                    if(err){
+                        resJson.message = err;
+                    }else{
+                        if(!data){
+                            resJson.message = '用户名不存在';
+                        }else{
+                            if(pwd != data.password){
+                                resJson.message = '密码错误';
+                            }else{
+                                resJson.state = 'success';
+                                resJson.message = '登录成功';
+                            }
+                        }
+                    }
+                    callback(resJson);
+                    db.close();
+                });
+            });
+        });
+    },
+
     artDel: function(aid, callback){
         var _aid = new mongo.ObjectID(aid);
         db.open(function(){
             db.collection('article', function(err, collection){
                 collection.remove({'_id':_aid}, function(err){
-                    var resJson = {
-                        aid: _aid,
-                        message: 'success!'
-                    };
-                    callback(err, resJson);
+                    callback(err ? {state:'failed', message:err} : {state:'success', message:'删除成功'});
                     db.close();
                 });
             });
@@ -31,7 +59,7 @@ module.exports = {
             db.collection('article', function(err, collection){
                 if(!data.aid){
                     collection.insert(data, function(err){
-                        callback(err ? {state:'failed!', message:err} : {state:'success!', data:data});
+                        callback(err ? {state:'failed', message:err} : {state:'success', data:data});
                     })
                 }else{
                     var _aid = new mongo.ObjectID(data.aid);
@@ -44,7 +72,7 @@ module.exports = {
                             content: data.content
                         }},
                         function(err){
-                            callback(err ? {state:'failed!', message:err} : {state:'success!', data:data});
+                            callback(err ? {state:'failed', message:err} : {state:'success', data:data});
                         }
                     );
                 }
