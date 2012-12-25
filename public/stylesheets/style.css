@@ -37,24 +37,29 @@ header {
 .logo-box {
     position: absolute;
     left: 0;
-    top: 6px;
+    top: 7px;
     text-shadow: 2px 1px 1px #000000;
 }
 .logo-box a {
     font-size: 24px;
+    line-height: 24px;
     color: #FF9900;
     font-style: italic;
-    vertical-align: middle;
+    zoom: 1;
 }
 .desc {
     font-size: 12px;
     font-weight: normal;
     color: #DDDDDD;
     margin-left: 6px;
-    vertical-align: -2px;
+}
+.pull-right {
+    position: absolute;
+    right: 40px;
+    top: 10px
 }
 nav {
-    background-image: linear-gradient(to bottom, #FFFFFF, #F8F8F8);
+    background: #F8F8F8;
     border-bottom: 1px solid #ebeded;
     border-top: 1px solid #CCCCCC;
     height: 38px;
@@ -94,7 +99,42 @@ footer {
     padding-top: 12px;
     color: #888A8A;
 }
-.footer-c a{
+.footer-c a {
     margin-left: 6px;
     color: #008EE8;
+}
+
+.btn {
+    display: inline-block;
+    zoom: 1;
+    position: relative;
+    padding: 0 10px;
+    border: 1px solid;
+    border-radius: 4px;
+    height: 20px;
+    line-height: 20px;
+    color: #FFFFFF;
+}
+.btn-red {
+    border-color: red;
+    background: #ed1c24;
+    background: -moz-linear-gradient(center top , rgba(237,28,36,0.3) 0, rgba(237,28,36,1) 44%) repeat scroll 0 0 transparent;
+    background: -webkit-gradient(linear,0 0,0 100%,from(rgba(237,28,36,0.3)),color-stop(44%,rgba(237,28,36,1)));
+}
+.btn-blue {
+    background: #009ddb;
+    background: -moz-linear-gradient(center top , rgba(0,157,219,0.3) 0px, rgba(0,157,219,1) 44%) repeat scroll 0 0 transparent;
+    background: -webkit-gradient(linear,0 0,0 100%,from(rgba(0,157,219,0.3)),color-stop(44%,rgba(0,157,219,1)));
+}
+.btn-green {
+    border-color: green;
+    background: #77b800;
+    background: -moz-linear-gradient(center top , rgba(119,180,0,0.3) 0px, rgba(119,180,0,1) 44%) repeat scroll 0 0 transparent;
+    background: -webkit-gradient(linear,0 0,0 100%,from(rgba(119,180,0,0.3)),color-stop(44%,rgba(119,180,0,1)));
+}
+.btn-black {
+
+}
+.btn-gray {
+
 }
