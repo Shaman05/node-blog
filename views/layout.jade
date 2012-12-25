@@ -7,19 +7,26 @@ html
     .wrap
       .content
         header
-          h1 Nodejser
-            em.desc= siteData.description
+          .logo-box
+            h1
+              a(href='/') #{siteData.master}
+              em.desc= siteData.description
           nav
-            a(href='/') 首页
-            a(href='/article') 文章列表
-            a(href='/about') 关于About
+            ul
+              li
+                a(href='/') 首页
+              li
+                a(href='/article') 文章列表
+              li
+                a(href='/about') 关于About
         block content
       footer
-        p Copy Rights 2012 ,
-          a(href='/') #{siteData.master}
-          if isLogin
-            a(href='/admin') Admin->Enter
-          else
-            a#login(href='#loginBox') Admin
+        .footer-c
+          p &copy; 2012 Powered by
+            a(href='#{siteData.powerUrl}') #{siteData.power}
+            if isLogin
+              a(href='/admin') Admin->Enter
+            else
+              a#login(href='#loginBox') Admin
     include fancyBox
     script(type='text/javascript',src='/js/sea.js',data-main='init')

@@ -10,8 +10,10 @@ var article = require('../models/article');
 var ajax = require('../models/ajaxApi');
 
 var siteData = {
-    master: 'shaman',
-    description: '关注Nodejs、前端开发'
+    master: 'Shaman',
+    description: 'nodejs爱好者 , 关注nodejs及其相关的技术',
+    power: 'Node-Blog',
+    powerUrl: 'http://github.com/Shaman05/node-blog'
 };
 
 exports.index = function(req, res){
@@ -24,7 +26,7 @@ exports.index = function(req, res){
 
 exports.about = function(req, res){
     res.render('about', {
-    	title: '关于我',
+    	title: '关于',
         siteData: siteData,
         isLogin: req.session.user ? true : false
     })
@@ -34,7 +36,7 @@ exports.artList = function(req, res){
     var sortBy = '_id';
     article.artList(sortBy, function(err, data){
         res.render('article', {
-            title: '文章列表',
+            title: '文章',
             siteData: siteData,
             dataList : data,
             isLogin: req.session.user ? true : false

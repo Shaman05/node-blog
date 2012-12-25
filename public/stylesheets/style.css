@@ -1,18 +1,100 @@
 @charset 'utf-8';
-html,body{height:100%;}
-body{font:12px/18px "微软雅黑","Lucida Grande",Helvetica,Arial,sans-serif}
-body,h1,h2,h3,ul,li,dl,dt{margin:0;}
+html, body {
+    height: 100%;
+}
+body {
+    font: 12px "微软雅黑", "Lucida Grande", Helvetica, Arial, sans-serif;
+    line-height: 18px;
+}
+body, h1, h2, h3, ul, li, dl, dt, p {
+    margin: 0;
+}
+a {
+    text-decoration: none;
+}
 .fancybox-layer,
-.tips-show{display: none;}
-
-.wrap{min-height:100%;position:relative;}
-.content{padding-bottom:59px}
-header,section,footer p{padding-left:20px}
-header{height:64px;border-bottom:1px solid #CCCCCC;}
-h1{font-size:24px;}
-.desc{font-size:12px;font-weight:normal;margin-left:6px}
-nav a{margin-right:6px}
-.tips-show{color: red;}
-
-
-footer{width:100%;height:59px;border-top:1px solid #CCCCCC;position:absolute;bottom:0;}
+.tips-show {
+    display: none;
+}
+.wrap {
+    min-height: 100%;
+    position: relative;
+}
+.content {
+    padding-bottom: 59px
+}
+.logo-box,
+nav,
+section,
+.footer-c {
+    padding-left: 40px
+}
+header {
+    background: #474A49;
+    padding-top: 38px;
+    position: relative;
+}
+.logo-box {
+    position: absolute;
+    left: 0;
+    top: 6px;
+    text-shadow: 2px 1px 1px #000000;
+}
+.logo-box a {
+    font-size: 24px;
+    color: #FF9900;
+    font-style: italic;
+    vertical-align: middle;
+}
+.desc {
+    font-size: 12px;
+    font-weight: normal;
+    color: #DDDDDD;
+    margin-left: 6px;
+    vertical-align: -2px;
+}
+nav {
+    background-image: linear-gradient(to bottom, #FFFFFF, #F8F8F8);
+    border-bottom: 1px solid #ebeded;
+    border-top: 1px solid #CCCCCC;
+    height: 38px;
+}
+nav ul {
+    float: left;
+    overflow: hidden;
+    padding-left: 0;
+}
+nav li {;
+    float: left;
+    height: 38px;
+    line-height: 38px;
+    list-style-type: none;
+    padding-right: 40px;
+}
+nav a {
+    color: #575756;
+    font-size: 14px;
+    font-weight: bold;
+    text-shadow: -1px 0 1px #DDDDDD;
+}
+.tips-show {
+    color: red;
+}
+footer {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    background: #F1F1F1;
+    border-top: 1px solid #DDDDDD;
+    height: 59px;
+}
+.footer-c {
+    border-top: 1px solid #FFFFFF;
+    overflow: hidden;
+    padding-top: 12px;
+    color: #888A8A;
+}
+.footer-c a{
+    margin-left: 6px;
+    color: #008EE8;
+}
