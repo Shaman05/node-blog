@@ -27,4 +27,13 @@ version: 0.1
 		
 		文章列表（删除) /admin/article
 		
-		编辑文章 /admin/article_add , /admin/article_edit/:id
+		编辑文章 /admin/article_edit , /admin/article_edit/:id
+
+    ajax:
+
+        登录  /login
+
+        登出  /login_out
+
+        文章删除 /admin/article_del/:id
+
