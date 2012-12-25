@@ -9,15 +9,24 @@
 var article = require('../models/article');
 var ajax = require('../models/ajaxApi');
 
+var siteData = {
+    master: 'shaman',
+    description: '关注Nodejs、前端开发'
+};
+
 exports.index = function(req, res){
     res.render('index', {
-        title: '首页'
+        title: '首页',
+        siteData: siteData,
+        isLogin: req.session.user ? true : false
     });
 };
 
 exports.about = function(req, res){
     res.render('about', {
-    	title: '关于我'
+    	title: '关于我',
+        siteData: siteData,
+        isLogin: req.session.user ? true : false
     })
 }
 
@@ -25,8 +34,10 @@ exports.artList = function(req, res){
     var sortBy = '_id';
     article.artList(sortBy, function(err, data){
         res.render('article', {
-            title: '文章列表'
-            ,dataList : data
+            title: '文章列表',
+            siteData: siteData,
+            dataList : data,
+            isLogin: req.session.user ? true : false
         });
     });
 };
@@ -36,7 +47,9 @@ exports.artShow = function(req, res){
     article.artGet(aid, function(err, data){
         res.render('article_show', {
             title: '文章详细',
-            article: data
+            siteData: siteData,
+            article: data,
+            isLogin: req.session.user ? true : false
         });
     });
 };
@@ -52,7 +65,7 @@ exports.ad_article = function(req, res){
     article.artList(sortBy, function(err, data){
         res.render('admin/ad_article', {
             title: '文章管理列表',
-            dataList : data
+            dataList: data
         });
     });
 };
@@ -79,7 +92,7 @@ exports.login = function(req, res){
     ajax.login(req.body, function(resJson){
         if(resJson.state == 'success'){
             //写入session
-            console.log(req.session); //undefined
+            req.session.user = req.body.name;
         }
         res.json(resJson);
     });
