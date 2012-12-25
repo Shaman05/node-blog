@@ -11,7 +11,7 @@ var ajax = require('../models/ajaxApi');
 
 var siteData = {
     master: 'Shaman',
-    description: 'nodejs爱好者 , 关注nodejs及其相关的技术',
+    description: 'nodejser , 关注nodejs及其相关的技术',
     power: 'Node-Blog',
     powerUrl: 'http://github.com/Shaman05/node-blog'
 };

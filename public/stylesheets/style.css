@@ -5,11 +5,19 @@ html, body {
 body {
     font: 12px "微软雅黑", "Lucida Grande", Helvetica, Arial, sans-serif;
     line-height: 18px;
+    min-width: 800px;
 }
 body, h1, h2, h3, ul, li, dl, dt, p {
     margin: 0;
 }
 a {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+nav a:hover,
+.btn:hover{
     text-decoration: none;
 }
 .fancybox-layer,
@@ -56,7 +64,7 @@ header {
 .pull-right {
     position: absolute;
     right: 40px;
-    top: 10px
+    top: 8px
 }
 nav {
     background: #F8F8F8;
@@ -96,7 +104,7 @@ footer {
 .footer-c {
     border-top: 1px solid #FFFFFF;
     overflow: hidden;
-    padding-top: 12px;
+    padding-top: 10px;
     color: #888A8A;
 }
 .footer-c a {
@@ -111,30 +119,42 @@ footer {
     padding: 0 10px;
     border: 1px solid;
     border-radius: 4px;
-    height: 20px;
+    height: 21px;
     line-height: 20px;
     color: #FFFFFF;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
+    vertical-align: middle;
 }
 .btn-red {
-    border-color: red;
-    background: #ed1c24;
-    background: -moz-linear-gradient(center top , rgba(237,28,36,0.3) 0, rgba(237,28,36,1) 44%) repeat scroll 0 0 transparent;
-    background: -webkit-gradient(linear,0 0,0 100%,from(rgba(237,28,36,0.3)),color-stop(44%,rgba(237,28,36,1)));
+
 }
 .btn-blue {
-    background: #009ddb;
-    background: -moz-linear-gradient(center top , rgba(0,157,219,0.3) 0px, rgba(0,157,219,1) 44%) repeat scroll 0 0 transparent;
-    background: -webkit-gradient(linear,0 0,0 100%,from(rgba(0,157,219,0.3)),color-stop(44%,rgba(0,157,219,1)));
+    background: #53A5EA;
+    background: -moz-linear-gradient(to bottom, #68B3EC, #318FE8);
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    background: -webkit-gradient(linear,0 0,0 100%,from(#68B3EC),to(#318FE8));
 }
 .btn-green {
-    border-color: green;
-    background: #77b800;
-    background: -moz-linear-gradient(center top , rgba(119,180,0,0.3) 0px, rgba(119,180,0,1) 44%) repeat scroll 0 0 transparent;
-    background: -webkit-gradient(linear,0 0,0 100%,from(rgba(119,180,0,0.3)),color-stop(44%,rgba(119,180,0,1)));
+    background: #56AF10;
+    background: -moz-linear-gradient(to bottom, #65C013, #3D950B);
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    background: -webkit-gradient(linear,0 0,0 100%,from(#65C013),to(#3D950B));
 }
 .btn-black {
-
+    border-color: #484848;
+    background: #1d221f;
+    background: -moz-linear-gradient(to bottom, #555555, #333333);
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    background: -webkit-gradient(linear,0 0,0 100%,from(#555555),to(#333333));
 }
 .btn-gray {
-
+    background: whitesmoke;
+    background: -moz-linear-gradient(to bottom, #FFFFFF, #E6E6E6);
+    border-color: rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.25);
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+    color: #333333;
+    background: -webkit-gradient(linear,0 0,0 100%,from(#FFFFFF),to(#E6E6E6));
 }

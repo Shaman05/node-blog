@@ -24,13 +24,20 @@ html
                 a(href='/about') 关于About
           .pull-right
             if isLogin
-              a.btn.btn-green(href='/admin') Admin->Enter
+              a.btn.btn-green(href='/admin',title='Enter') 进 入
             else
-              a#login.btn.btn-black(href='#loginBox') Admin
+              a#login.btn.btn-black(href='#loginBox',title='Admin login') 登 录
         block content
       footer
         .footer-c
-          p &copy; 2012 Powered by
+          p &copy; 2012
             a(href='#{siteData.powerUrl}') #{siteData.power}
+            span    Themed by shaman
+          p 使用
+            a(href='http://nodejs.org/') Nodejs
+            a(href='http://expressjs.com/') Express
+            a(href='http://jade-lang.com/') Jade
+            a(href='http://cn.docs.mongodb.org/') MongoDB
+
     include fancyBox
     script(type='text/javascript',src='/js/sea.js',data-main='init')
