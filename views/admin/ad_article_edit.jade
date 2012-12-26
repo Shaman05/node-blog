@@ -16,11 +16,11 @@ block content
         span 标签：
         input#tags(type='text',value='#{article.tags}')
       .row
-        span 内容：
+        span.for-textarea 内容：
         textarea#content #{article.content}
       .row
         span &nbsp;
-        a#art-editBtn.btn.blue(href='javascript:') 确定
+        a#art-editBtn.btn.btn-blue(href='javascript:') 确定
     else
       p add
       .row
@@ -34,9 +34,9 @@ block content
         span 标签：
         input#tags(type='text')
       .row
-        span 内容：
+        span.for-textarea 内容：
         textarea#content
       .row
         span &nbsp;
-        a#art-editBtn.btn.blue(href='javascript:') 确定
-        a.btn.gray(href='javascript:') 重置
+        a#art-editBtn.btn.btn-blue(href='javascript:') 确定
+        a.btn.btn-gray(href='javascript:') 重置

@@ -1,4 +1,5 @@
 @charset 'utf-8';
+/*global style*/
 html, body {
     height: 100%;
 }
@@ -16,6 +17,33 @@ a {
 a:hover {
     text-decoration: underline;
 }
+select,
+input,
+textarea {
+    padding: 4px;
+    border-radius: 4px;
+    border: 1px solid #CCCCCC;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 13px;
+}
+select {
+    height: 28px;
+    line-height: 28px;
+}
+input,
+textarea {
+    padding: 4px;
+    line-height: 18px;
+    transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+    -webkit-transition: border linear 0.2s, box-shadow linear 0.2s; 
+}
+input:focus,
+textarea:focus {
+    border-color: rgba(82, 168, 236, 0.8);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(82, 168, 236, 0.6);
+    outline: 0 none;
+}
 nav a:hover,
 .btn:hover{
     text-decoration: none;
@@ -23,7 +51,30 @@ nav a:hover,
 .fancybox-layer,
 .tips-show {
     display: none;
+    margin: 0 12px;
 }
+.row {
+    overflow: hidden;
+    padding: 6px 0;
+}
+.row span {
+    display: inline-block;
+    zoom: 1; 
+    padding-right: 2px;
+    text-align: right;
+    width: 80px;
+}
+select,
+input,
+textarea,
+.row span {
+    vertical-align: middle;
+}
+.row .for-textarea { 
+    vertical-align: top;
+}
+
+/*page style*/
 .wrap {
     min-height: 100%;
     position: relative;
@@ -116,11 +167,10 @@ footer {
     display: inline-block;
     zoom: 1;
     position: relative;
-    padding: 0 10px;
+    padding: 2px 10px;
+    line-height: normal;
     border: 1px solid;
     border-radius: 4px;
-    height: 21px;
-    line-height: 20px;
     color: #FFFFFF;
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
     vertical-align: middle;
@@ -151,10 +201,24 @@ footer {
     background: -webkit-gradient(linear,0 0,0 100%,from(#555555),to(#333333));
 }
 .btn-gray {
-    background: whitesmoke;
+    background: #E9E9E9;
     background: -moz-linear-gradient(to bottom, #FFFFFF, #E6E6E6);
     border-color: rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.25);
     text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
     color: #333333;
     background: -webkit-gradient(linear,0 0,0 100%,from(#FFFFFF),to(#E6E6E6));
+}
+.login-box {
+    height: 162px;
+    width: 300px;
+}
+.login-box input {
+    width: 190px;
+    height: 18px;
+}
+.login-box h3 {
+    padding: 8px 0;
+}
+.login-box span {
+    width: 58px;    
 }

@@ -4,4 +4,6 @@ block content
   h3 文章详细内容
   article
     h2 标题: #{article.title}
-    section 内容： #{article.content}
+    section 内容： 
+      pre.prettyprint
+        code #{article.content}

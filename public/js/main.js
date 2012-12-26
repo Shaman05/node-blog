@@ -6,28 +6,26 @@
  * To change this template use File | Settings | File Templates.
  */
 
-define(function(require, exports, module){
-    module.exports = {
-        init: function(){
-            this.events()
-        },
-
-        events: function(){
-            $('#login').fancybox();
-            $('#loginBtn').click(function(){
-                var tipsBox = $('#loginTips');
-                tipsBox.hide();
-                var userData = {
-                    name: $('#userName').val(),
-                    password: $('#password').val()
-                };
-                $.post('/ajax/login', userData, function(data){
-                    if(data.state == 'success')
-                        window.location.href = '/admin';
-                    else
-                        tipsBox.html(data.message).fadeIn(500);
-                });
+;(function($){
+    $(function(){
+        $(".prettyprint code").each(function(){
+            
+            $(this).html(prettyPrintOne($(this).html()));
+        });
+        $('#login').fancybox();
+        $('#loginBtn').click(function(){
+            var tipsBox = $('#loginTips');
+            tipsBox.hide();
+            var userData = {
+                name: $('#userName').val(),
+                password: $('#password').val()
+            };
+            $.post('/ajax/login', userData, function(data){
+                if(data.state == 'success')
+                    window.location.href = '/admin';
+                else
+                    tipsBox.html(data.message).fadeIn(500);
             });
-        }
-    }
-})
+        });
+    });
+})(jQuery);

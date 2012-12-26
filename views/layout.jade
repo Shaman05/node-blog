@@ -3,6 +3,8 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/prettify.css')
+    link(rel='stylesheet', href='/js/fancybox2/jquery.fancybox.css')
   body
     div(style='display:none')
       // if lt IE9
@@ -21,7 +23,7 @@ html
               li
                 a(href='/article') 文章
               li
-                a(href='/about') 关于About
+                a(href='/about') About
           .pull-right
             if isLogin
               a.btn.btn-green(href='/admin',title='Enter') 进 入
@@ -40,4 +42,7 @@ html
             a(href='http://cn.docs.mongodb.org/') MongoDB
 
     include fancyBox
-    script(type='text/javascript',src='/js/sea.js',data-main='init')
+    script(type='text/javascript',src='/js/jquery.js')
+    script(type='text/javascript',src='/js/prettify.js')
+    script(type='text/javascript',src='/js/fancybox2/jquery.fancybox.pack.js')
+    script(type='text/javascript',src='/js/main.js')
