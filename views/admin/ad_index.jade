@@ -2,4 +2,6 @@ extends layout
 
 block content
   section
-    h2 后台管理首页
+    .row
+      span.span-col 服务器名称：
+      span #{osInfo.hostname}

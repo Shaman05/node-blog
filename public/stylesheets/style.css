@@ -57,7 +57,7 @@ nav a:hover,
     overflow: hidden;
     padding: 6px 0;
 }
-.row span {
+.span-col {
     display: inline-block;
     zoom: 1; 
     padding-right: 2px;
@@ -67,17 +67,28 @@ nav a:hover,
 select,
 input,
 textarea,
-.row span {
+.span-col,
+.btn,
+.home-page {
     vertical-align: middle;
 }
 .row .for-textarea { 
     vertical-align: top;
+}
+.ke-content{
+    min-width: 680px;
+    min-height: 300px;
+}
+.row .ke-container {
+    display: inline-block;
+    zoom: 1;
 }
 
 /*page style*/
 .wrap {
     min-height: 100%;
     position: relative;
+    overflow-x: hidden;
 }
 .content {
     padding-bottom: 59px
@@ -86,7 +97,8 @@ textarea,
 nav,
 section,
 .footer-c {
-    padding-left: 40px
+    padding-left: 40px;
+    padding-right: 40px;
 }
 header {
     background: #474A49;
@@ -116,6 +128,10 @@ header {
     position: absolute;
     right: 40px;
     top: 8px
+}
+.home-page{
+    color: #FFF;
+    margin-right: 20px;
 }
 nav {
     background: #F8F8F8;
@@ -219,6 +235,11 @@ footer {
 .login-box h3 {
     padding: 8px 0;
 }
-.login-box span {
+.login-box .span-col {
     width: 58px;    
+}
+
+/*admin style*/
+.toolbar {
+    padding: 10px 0;
 }

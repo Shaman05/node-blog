@@ -8,6 +8,7 @@
 
 var article = require('../models/article');
 var ajax = require('../models/ajaxApi');
+var sys = require('../models/sys');
 
 var siteData = {
     master: 'Shaman',
@@ -58,7 +59,8 @@ exports.artShow = function(req, res){
 
 exports.ad_index = function(req, res){
     res.render('admin/ad_index', {
-        title: '后台管理首页'
+        title: '后台管理首页',
+        osInfo: sys.os
     });
 };
 

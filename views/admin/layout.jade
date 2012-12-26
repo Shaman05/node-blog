@@ -7,13 +7,20 @@ html
     .wrap
       .content
         header
-          h1 Nodejser - Admin
+          .logo-box
+            h1
+              a(href='/admin') NodeBlog - Admin
+          .pull-right
+            a.home-page(href='/') 博客首页
+            a.btn.btn-gray(href='javascript:') 退 出
           nav
-            a(href='/admin') 首页
-            a(href='/admin/article') 文章列表
-          .right-bar
-            a(href='/') 博客首页
+            ul
+              li
+                a(href='/admin') 首页
+              li
+                a(href='/admin/article') 文章列表
         block content
       footer
-        p Copy Rights 2012
+        .footer-c
+          p &copy; 2012
     script(type='text/javascript',src='/js/admin/sea.js',data-main='ad_init')

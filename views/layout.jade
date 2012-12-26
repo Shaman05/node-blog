@@ -16,6 +16,11 @@ html
             h1
               a(href='/') #{siteData.master}
               em.desc= siteData.description
+          .pull-right
+            if isLogin
+              a.btn.btn-green(href='/admin',title='Enter') 进 入
+            else
+              a#login.btn.btn-black(href='#loginBox',title='Admin login') 登 录
           nav
             ul
               li
@@ -24,11 +29,6 @@ html
                 a(href='/article') 文章
               li
                 a(href='/about') About
-          .pull-right
-            if isLogin
-              a.btn.btn-green(href='/admin',title='Enter') 进 入
-            else
-              a#login.btn.btn-black(href='#loginBox',title='Admin login') 登 录
         block content
       footer
         .footer-c

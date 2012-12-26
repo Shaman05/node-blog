@@ -5,38 +5,46 @@ block content
     if act == 'edit'
       p edit
       .row
-        span 标题：
+        span.span-col 标题：
         input#title(type='text',value='#{article.title}')
         input#aid(type='hidden',value='#{article._id}')
       .row
-        span 分类：
+        span.span-col 分类：
         select#category
           option(selected) 未分类
       .row
-        span 标签：
+        span.span-col 标签：
         input#tags(type='text',value='#{article.tags}')
       .row
-        span.for-textarea 内容：
-        textarea#content #{article.content}
+        span.span-col.for-textarea 内容：
+        textarea#content.ke-content(name='content') #{article.content}
       .row
-        span &nbsp;
+        span.span-col &nbsp;
         a#art-editBtn.btn.btn-blue(href='javascript:') 确定
     else
       p add
       .row
-        span 标题：
+        span.span-col 标题：
         input#title(type='text')
       .row
-        span 分类：
+        span.span-col 分类：
         select#category
           option(selected) 未分类
       .row
-        span 标签：
+        span.span-col 标签：
         input#tags(type='text')
       .row
-        span.for-textarea 内容：
-        textarea#content
+        span.span-col.for-textarea 内容：
+        textarea#content.ke-content(name='content')
       .row
-        span &nbsp;
+        span.span-col &nbsp;
         a#art-editBtn.btn.btn-blue(href='javascript:') 确定
         a.btn.btn-gray(href='javascript:') 重置
+  script(type='text/javascript',src='/KE/kindeditor-all-min.js')
+  script(type='text/javascript')
+    var editor;
+    KindEditor.ready(function(K) {
+        editor = K.create('textarea[name="content"]', {
+            allowFileManager : true
+        });
+    });

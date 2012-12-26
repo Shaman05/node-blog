@@ -9,7 +9,7 @@
 define(function(require, exports, module){
     module.exports = {
         init: function(){
-            this.events()
+            this.events();
         },
 
         events: function(){
@@ -32,7 +32,7 @@ define(function(require, exports, module){
                     title: $('#title').val(),
                     category: 'css',
                     tags: $('#tags').val(),
-                    content: $('#content').val()
+                    content: editor.html()
                 }
                 if(!$.trim(postData.title) || !$.trim(postData.content)){
                     alert('标题或者内容不能为空！');
