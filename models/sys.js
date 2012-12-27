@@ -14,8 +14,12 @@ module.exports = (function(){
             hostname: _os.hostname(),
             type: _os.type(),
             release: _os.release(),
-            totalmem: _os.totalmem(),
-            freemem: _os.freemem()
+            memUse: (function(){
+                var unit = 1024 * 1024;
+                var total = parseInt(_os.totalmem() / unit);
+                var used = total - parseInt(_os.freemem() / unit);
+                return used + '/' + total + 'MB';
+            })()
         }
     }
 })();
