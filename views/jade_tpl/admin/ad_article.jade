@@ -4,10 +4,31 @@ block content
   section
     .toolbar
       a.btn.btn-green(href='./article_edit') 添加文章
-    ul#art-list.list
-      for article in dataList
-        li 标题：#{article.title}
-          a(href='./article_edit/#{article._id}') 编辑
-          a(href='javascript:', data-del-id='#{article._id}') 删除
-      else
-        li no article.
+    .article-table
+      table#art-list(width='100%')
+        thead
+          tr
+            th(align='left') 标题
+            th(width='120') 发布时间
+              a(href='javascript:',data-action='pubtime') a
+            th(width='80') 分类
+            th(width='100') 标签
+            th(width='60') 点击次数
+              a(href='javascript:',data-action='clicks') a
+            th(width='160') 操作
+        tbody
+          for article in dataList
+            tr
+              td(align='left') 
+                a(href='/article/#{article._id}',target='_blank') #{article.title}
+              td(align='center') #{article.pubtime}
+              td(align='center') #{article.category}
+              td(align='center') #{article.tags}
+              td(align='center') #{article.clicks}
+              td(align='center') 
+                a.btn.btn-blue(href='./article_edit/#{article._id}') 编辑
+                &nbsp;&nbsp;
+                a.btn.btn-gray(href='javascript:', data-del-id='#{article._id}') 删除
+          else
+            tr
+              td(colspan='6') 暂无文章

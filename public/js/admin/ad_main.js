@@ -30,7 +30,7 @@ define(function(require, exports, module){
                 var postData = {
                     aid: $('#aid').val(),
                     title: $('#title').val(),
-                    category: 'css',
+                    category: $('#category').val(),
                     tags: $('#tags').val(),
                     content: editor.html()
                 }

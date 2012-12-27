@@ -42,6 +42,23 @@ module.exports = {
         });
     },
 
+    logout: function(user, callback){
+        db.open(function(){
+            db.collection('users', function(err, collection){
+                collection.remove({'name':user}, function(err){
+                    var resJson = {};
+                    if(err){
+                        resJson.stats = 'failed';
+                    }else{
+                        resJson.stats = 'success';
+                    }
+                    callback(resJson);
+                    db.close();
+                });
+            });
+        });
+    },
+
     artDel: function(aid, callback){
         var _aid = new mongo.ObjectID(aid);
         db.open(function(){
@@ -58,6 +75,10 @@ module.exports = {
         db.open(function(){
             db.collection('article', function(err, collection){
                 if(!data.aid){
+
+                    data.pubtime = getTime();
+                    data.clicks = 0;
+                    console.log(data)
                     collection.insert(data, function(err){
                         callback(err ? {state:'failed', message:err} : {state:'success', data:data});
                     })
@@ -80,4 +101,12 @@ module.exports = {
             });
         });
     }
+};
+
+function getTime(){
+    var now = new Date();
+    var year = now.getFullYear();
+    var month = now.getMonth() + 1;
+    var day = now.getDay();
+    return year + '-' + month + '-' + day;
 }

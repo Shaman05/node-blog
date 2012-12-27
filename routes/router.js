@@ -107,6 +107,21 @@ exports.login = function(req, res){
     });
 };
 
+exports.logout = function(req, res, next){
+    //var user = req.session.user;
+    req.session.user = null;
+    return res.redirect('/');
+    /*ajax.logout(user, function(resJson){
+        if(resJson.state == 'success'){
+            //清除session
+            req.session.user = null;
+            next();
+        }else{
+            res.json(resJson);
+        }
+    });*/
+};
+
 exports.artDel = function(req, res){
     var aid = req.body.aid || null;
     ajax.artDel(aid, function(resJson){

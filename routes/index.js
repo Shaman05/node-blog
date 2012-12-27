@@ -28,6 +28,8 @@ module.exports = function(app){
 
     //ajax
     app.post('/ajax/login', routes.login);
+    app.get('/admin/logout', routes.logout);
+    app.get('/admin/logout', routes.index);
     app.post('/ajax/article_del', routes.artDel);
     app.post('/ajax/article_edit', routes.artEdit);
 };
