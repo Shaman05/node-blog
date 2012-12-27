@@ -1,0 +1,11 @@
+<% include header %>
+	<section>
+		<article>
+			<h2 class="title"><%= article.title %></h2>
+			<% include article-info-block %>
+			<div class="text">
+				<%= article.content %>
+			</div>
+		</article>	
+	</section>
+<% include footer %>

@@ -58,8 +58,6 @@ nav a:hover,
     padding: 6px 0;
 }
 .span-col {
-    display: inline-block;
-    zoom: 1; 
     padding-right: 2px;
     text-align: right;
     width: 80px;
@@ -69,7 +67,8 @@ input,
 textarea,
 .span-col,
 .btn,
-.home-page {
+.home-page,
+.article-info i {
     vertical-align: middle;
 }
 .row .for-textarea { 
@@ -79,7 +78,9 @@ textarea,
     min-width: 680px;
     min-height: 300px;
 }
-.row .ke-container {
+.row .ke-container,
+.span-col,
+.article-info i{
     display: inline-block;
     zoom: 1;
 }
@@ -157,8 +158,64 @@ nav a {
     font-weight: bold;
     text-shadow: -1px 0 1px #DDDDDD;
 }
-.tips-show {
-    color: red;
+.post {
+    padding: 20px 0;
+}
+.post .title a{
+    font-size: 14px;
+    line-height: 24px;
+    color: #008EE8;
+}
+article {
+    min-width: 540px;
+    padding: 20px 0;
+    color: #3E3E3E;
+}
+article .title {
+    font-size: 16px;
+    line-height: 32px;
+}
+article .text {
+    text-shadow: 0 1px 1px #CCCCCC;
+    padding: 2px 0;
+}
+.article-info{
+    overflow: hidden;
+    zoom: 1;
+}
+.article-info span{
+    float: left;
+    margin-right: 2px;
+    padding-right: 4px;
+    cursor: default;
+    border-radius: 2px;
+}
+.article-info span:hover {
+    background-color: #636363;
+    color: #FDFDFD;
+}
+.article-info span:hover i {
+    background-image: url("../images/glyphicons-halflings-white.png");
+}
+.article-info i{
+    padding: 9px;
+    line-height: 0;
+    overflow: hidden;
+    text-indent: -200px;
+    background-image: url("../images/glyphicons-halflings.png");
+    background-repeat: no-repeat;
+}
+.pubtime {
+    background-position: -46px -23px;
+}
+.category {
+    background-position: -118px -71px;
+}
+.tags {
+    background-position: 2px -47px;
+}
+.clicks {
+    background-position: -190px -143px;
 }
 footer {
     width: 100%;
@@ -237,6 +294,9 @@ footer {
 }
 .login-box .span-col {
     width: 58px;    
+}
+.tips-show {
+    color: red;
 }
 
 /*admin style*/

@@ -18,10 +18,14 @@ var siteData = {
 };
 
 exports.index = function(req, res){
-    res.render('index', {
-        title: '首页',
-        siteData: siteData,
-        isLogin: req.session.user ? true : false
+    var sortBy = '_id';
+    article.artList(sortBy, function(err, data){
+        res.render('index', {
+            title: '首页',
+            siteData: siteData,
+            articles : data,
+            isLogin: req.session.user ? true : false
+        });
     });
 };
 
@@ -48,6 +52,7 @@ exports.artList = function(req, res){
 exports.artShow = function(req, res){
     var aid = req.params.id;
     article.artGet(aid, function(err, data){
+        //data.content = "&lt;p&gt;段落！fuck&lt;/p&gt;";
         res.render('article_show', {
             title: '文章详细',
             siteData: siteData,
