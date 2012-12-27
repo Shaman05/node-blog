@@ -3,7 +3,7 @@
 	<h3 class="title"><a href="./article/<%= article._id %>"><%= article.title %></a></h3>
 	<% include article-info-block %>
 	<div class="summry">
-		<%= article.content %>
+		<%- article.content %>
 	</div>
 </div>		
 <% }) %>
