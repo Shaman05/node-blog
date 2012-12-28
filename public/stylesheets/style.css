@@ -82,8 +82,8 @@ textarea,
     vertical-align: top;
 }
 .ke-content{
-    min-width: 680px;
-    min-height: 300px;
+    min-width: 800px;
+    height: 500px;
 }
 .row .ke-container,
 .span-col,
@@ -169,7 +169,7 @@ nav a {
     padding: 20px 0;
 }
 .post .title a{
-    font-size: 14px;
+    font-size: 16px;
     line-height: 24px;
     color: #008EE8;
 }

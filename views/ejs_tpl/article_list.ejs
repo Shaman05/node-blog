@@ -1,6 +1,6 @@
 <% articles.forEach(function(article, index){ %>
 <div class="post">
-	<h3 class="title"><a href="./article/<%= article._id %>"><%= article.title %></a></h3>
+	<h3 class="title"><a href="/article/<%= article._id %>"><%= article.title %></a></h3>
 	<% include article-info-block %>
 	<div class="summry">
 		<%- article.content %>

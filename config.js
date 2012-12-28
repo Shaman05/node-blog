@@ -6,11 +6,13 @@
  * To change this template use File | Settings | File Templates.
  */
 
+var tpl = 'ejs';
+
 module.exports = {
     appRoot: __dirname,
     staticPath: 'public',
-    viewEngine: 'ejs',
-    viewsDir: __dirname + '/views/ejs_tpl',
+    viewEngine: tpl,
+    viewsDir: __dirname + '/views/' + tpl  + '_tpl',
     port: 3000,
     dbSettings: {
         cookieSecret: 'shaman',
