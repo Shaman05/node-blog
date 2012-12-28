@@ -1,0 +1,53 @@
+<% include header %>
+	<section>
+		<div class="toolbar">
+            <a class="btn btn-green" href="./article_edit">添加文章</a>
+        </div>
+        <div class="article-table">
+            <table id="art-list" width="100%">
+                <thead>
+                    <tr>
+                        <th align="left">标题</th>
+                        <th width="120">
+                            标题
+                            <a href="javascript:" data-action="pubtime">a</a>
+                        </th>
+                        <th width="80">分类</th>
+                        <th width="100">标签</th>
+                        <th width="60">
+                            点击次数
+                            <a href="javascript:" data-action="clicks">a</a>
+                        </th>
+                        <th width="160">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% dataList.forEach(function(article, index){ %>
+                    <tr>
+                        <td align="left">
+                            <a href="/article/<%= article._id%>" target="_blank"><%= article.title%></a>
+                        </td>
+                        <td align="center">
+                            <%= article.pubtime %>
+                        </td>
+                        <td align="center">
+                            <%= article.category %>
+                        </td>
+                        <td align="center">
+                            <%= article.tags %>
+                        </td>
+                        <td align="center">
+                            <%= article.clicks %>
+                        </td>
+                        <td align="center">
+                            <a href="./article_edit/<%= article._id%>" class="btn btn-blue">编辑</a>
+                            &nbsp;&nbsp;
+                            <a href="javascript:" class="btn btn-gray" data-del-id="<%= article._id%>">删除</a>
+                        </td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+	</section>
+<% include footer %>

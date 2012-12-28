@@ -1,0 +1,13 @@
+<% include header %>
+	<section>
+		<h3>服务器信息</h3>
+		<div class="row">
+		    <span class="span-col">名称:</span>
+		    <span><%= osInfo.hostname %></span>
+		</div>
+		<div class="row">
+            <span class="span-col">操作系统:</span>
+            <span><%= osInfo.type %>, 版本：<%= osInfo.release %></span>
+        </div>
+	</section>
+<% include footer %>

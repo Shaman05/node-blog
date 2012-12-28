@@ -1,0 +1,73 @@
+<% include header %>
+	<section class="article-edit">
+        <% if(act == "edit"){ %>
+        <div class="toolbar">
+            编辑文章：
+        </div>
+        <div class="row">
+            <span class="span-col">标题：</span>
+            <input id="title" type="text" value="<%= article.title %>" size="60">
+            <input id="aid" type="hidden" value="<%= article._id %>">
+        </div>
+        <div class="row">
+            <span class="span-col">分类：</span>
+            <select name="category" id="category">
+                <option value="未分类" selected>未分类</option>
+            </select>
+        </div>
+        <div class="row">
+            <span class="span-col">标签：</span>
+            <input id="tags" type="text" value="<%= article.tags %>">
+        </div>
+        <div class="row">
+            <span class="span-col for-textarea">内容：</span>
+            <textarea class="ke-content" name="content" id="content" cols="30" rows="10">
+                <%= article.content %>
+            </textarea>
+        </div>
+        <div class="row">
+            <span class="span-col">&nbsp;</span>
+            <a id="art-editBtn" class="btn btn-blue" href="javascript:">确定</a>
+            <a class="btn btn-gray" href="javascript:history.back(-1)">取消</a>
+        </div>
+        <% }else{ %>
+        <div class="toolbar">
+            添加新的文章
+            <strong>(注意：必须要有标题和内容)</strong>
+        </div>
+        <div class="row">
+            <span class="span-col">标题：</span>
+            <input id="title" type="text" size="60">
+        </div>
+        <div class="row">
+            <span class="span-col">分类：</span>
+            <select name="category" id="category">
+                <option value="未分类" selected>未分类</option>
+            </select>
+        </div>
+        <div class="row">
+            <span class="span-col">标签：</span>
+            <input id="tags" type="text" placeholder="多个标签请使用逗号分开">
+        </div>
+        <div class="row">
+            <span class="span-col for-textarea">内容：</span>
+            <textarea class="ke-content" name="content" id="content" cols="30" rows="10">
+            </textarea>
+        </div>
+        <div class="row">
+            <span class="span-col">&nbsp;</span>
+            <a id="art-editBtn" class="btn btn-blue" href="javascript:">确定</a>
+            <a class="btn btn-gray" href="javascript:">重置</a>
+        </div>
+        <% } %>
+        <script type="text/javascript" src="/KE/kindeditor-all-min.js"></script>
+        <script type="text/javascript">
+            var editor;
+            KindEditor.ready(function(K) {
+                editor = K.create('textarea[name="content"]', {
+                    allowFileManager : true
+                });
+            });
+        </script>
+	</section>
+<% include footer %>
