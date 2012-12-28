@@ -65,7 +65,8 @@ nav a:hover,
     text-align: right;
     width: 80px;
 }
-.row .btn {
+.row .btn,
+.toolbar .btn {
     margin-right: 12px;
 }
 select,
@@ -181,9 +182,14 @@ article .title {
     font-size: 16px;
     line-height: 32px;
 }
-article .text {
-    text-shadow: 0 1px 1px #CCCCCC;
-    padding: 2px 0;
+article .text,
+.summry {
+    padding: 12px 20px;
+    margin-top: 2px;
+    background: #F6F6F6;
+    border-color: #E6E6E6;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
 }
 .article-info{
     overflow: hidden;
@@ -229,9 +235,6 @@ article .text {
 .atag {
     margin-right: 4px;
     color: #3E3E3E;
-}
-.summry {
-    border-bottom: 1px solid #CCCCCC;
 }
 footer {
     width: 100%;

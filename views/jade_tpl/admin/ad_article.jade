@@ -3,13 +3,14 @@ extends layout
 block content
   section
     .toolbar
-      a.btn.btn-green(href='./article_edit') 添加文章
+      a.btn.btn-green(href='/admin/article_edit') 添加文章
+      a.btn.btn-green(href='/admin/category_edit') 分类管理
     .article-table
       table#art-list(width='100%')
         thead
           tr
             th(align='left') 标题
-            th(width='120') 标题
+            th(width='120') 更新时间
               a(href='javascript:',data-action='pubtime') a
             th(width='80') 分类
             th(width='100') 标签

@@ -4,7 +4,7 @@ block content
   section
     h3 文章列表
     ul.list
-      for article in dataList
+      for article in articles
         li id：#{article._id} , 标题：
           a(href='/article/#{article._id}') #{article.title}
       else

@@ -8,8 +8,7 @@
 
 ;(function($){
     $(function(){
-        $(".prettyprint code").each(function(){
-            
+        $(".prettyprint").each(function(){
             $(this).html(prettyPrintOne($(this).html()));
         });
         $('#login').fancybox();
