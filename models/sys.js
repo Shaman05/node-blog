@@ -7,6 +7,7 @@
  */
 
 var _os = require('os');
+var config = require('../config');
 
 module.exports = (function(){
     return {
@@ -20,6 +21,14 @@ module.exports = (function(){
                 var used = total - parseInt(_os.freemem() / unit);
                 return used + '/' + total + 'MB';
             })()
+        },
+
+        site: {
+            port: process.env.PORT || config.port,
+            root: config.appRoot,
+            staticDir: config.appRoot + '\\' + config.staticPath,
+            viewEngine: config.viewEngine,
+            viewDir: config.viewsDir.replace(/\//g, '\\')
         }
     }
 })();

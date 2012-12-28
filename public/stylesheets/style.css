@@ -71,7 +71,7 @@ nav a:hover,
 select,
 input,
 textarea,
-.span-col,
+.row span,
 .btn,
 .home-page,
 .article-info i {
@@ -204,24 +204,26 @@ article .text {
     background-image: url("../images/glyphicons-halflings-white.png");
 }
 .article-info i{
+    float: left;
     padding: 9px;
     line-height: 0;
+    font-size: 0;
     overflow: hidden;
     text-indent: -200px;
     background-image: url("../images/glyphicons-halflings.png");
     background-repeat: no-repeat;
 }
 .pubtime {
-    background-position: -46px -23px;
+    background-position: -46px -22px;
 }
 .category {
-    background-position: -118px -71px;
+    background-position: -118px -70px;
 }
 .tags {
-    background-position: 2px -47px;
+    background-position: 2px -46px;
 }
 .clicks {
-    background-position: -190px -143px;
+    background-position: -190px -142px;
 }
 footer {
     width: 100%;
@@ -314,6 +316,10 @@ footer {
 .toolbar strong {
     margin-left: 6px;
     font-size: 12px;
+    color: red;
+}
+.ad-index .span-col {
+    width: 120px;
     color: red;
 }
 .article-table thead{

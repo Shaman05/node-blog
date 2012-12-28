@@ -4,14 +4,17 @@ block content
   section
     article
       h2.title 标题: #{article.title}
-      .info
-        span 
-          i.pubtime 
-            #{article.pubtime}
+      .article-info
         span
-          i.category 
-            #{article.category}
+          i.pubtime
+          | #{article.pubtime}
         span
-          i.tags 
-            #{article.tags} 
-      .text #{article.content}
+          i.category
+          | #{article.category}
+        span
+          i.tags
+          | #{article.tags}
+        span
+          i.clicks
+          | #{article.clicks}
+      .text  #{article.content}
