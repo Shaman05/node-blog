@@ -8,10 +8,11 @@ var mongo = require('../node_modules/mongodb');
 var db = require('./db');
 
 module.exports = {
-    artList:function(sortBy, callback){
+    artList:function(filter, callback){
+        var sortBy = filter.sortBy;
         db.open(function(){
             db.collection('article', function(err, collection){
-                collection.find({},function(err, cursor){
+                collection.find(filter.condition,function(err, cursor){
                     if(sortBy && typeof(sortBy) === 'string')
                         cursor.sort(sortBy);
                     cursor.toArray(function(err,items){
@@ -39,4 +40,4 @@ module.exports = {
             });
         }
     }
-}
+};

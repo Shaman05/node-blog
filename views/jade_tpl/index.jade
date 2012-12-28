@@ -2,4 +2,10 @@ extends layout
 
 block content
   section
-    h2 Hello , Nodejs
+    h3 文章列表
+    ul.list
+      for article in dataList
+        li id：#{article._id} , 标题：
+          a(href='/article/#{article._id}') #{article.title}
+      else
+        li no article.

@@ -23,7 +23,7 @@ exports.index = function(req, res){
         res.render('index', {
             title: '首页',
             siteData: siteData,
-            articles : data,
+            dataList : data,
             isLogin: req.session.user ? true : false
         });
     });
@@ -38,10 +38,23 @@ exports.about = function(req, res){
 }
 
 exports.artList = function(req, res){
-    var sortBy = '_id';
-    article.artList(sortBy, function(err, data){
-        res.render('article', {
-            title: '文章',
+    var query = req.params;
+    var title = '文章列表';
+    var filter = {
+        sortBy: null,
+        condition: {}
+    };
+    if(query.tag){
+        title = '标签 - ' + query.tag + ' 的相关文章';
+        filter.condition = {tags: {$all: [query.tag]}};
+    }
+    if(query.keyword){
+        title = '关键字为：' + query.keyword + ' 的相关文章';
+        filter.condition = {title: query.keyword};
+    }
+    article.artList(filter, function(err, data){
+        res.render('index', {
+            title: title,
             siteData: siteData,
             dataList : data,
             isLogin: req.session.user ? true : false
@@ -52,9 +65,8 @@ exports.artList = function(req, res){
 exports.artShow = function(req, res){
     var aid = req.params.id;
     article.artGet(aid, function(err, data){
-        //data.content = "&lt;p&gt;段落！fuck&lt;/p&gt;";
         res.render('article_show', {
-            title: '文章详细',
+            title: data.title,
             siteData: siteData,
             article: data,
             isLogin: req.session.user ? true : false

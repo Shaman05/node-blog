@@ -75,10 +75,9 @@ module.exports = {
         db.open(function(){
             db.collection('article', function(err, collection){
                 if(!data.aid){
-
                     data.pubtime = getTime();
                     data.clicks = 0;
-                    console.log(data)
+                    data.tags = data.tags.split(',');
                     collection.insert(data, function(err){
                         callback(err ? {state:'failed', message:err} : {state:'success', data:data});
                     })

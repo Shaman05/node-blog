@@ -13,7 +13,8 @@ block content
           | #{article.category}
         span
           i.tags
-          | #{article.tags}
+          for tag in article.tags
+            a.atag(href='/tag/#{tag}') #{tag}
         span
           i.clicks
           | #{article.clicks}
