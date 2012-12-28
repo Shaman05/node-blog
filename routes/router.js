@@ -23,7 +23,7 @@ exports.index = function(req, res){
         res.render('index', {
             title: '首页',
             siteData: siteData,
-            dataList : data,
+            articles : data,
             isLogin: req.session.user ? true : false
         });
     });
@@ -56,7 +56,7 @@ exports.artList = function(req, res){
         res.render('index', {
             title: title,
             siteData: siteData,
-            dataList : data,
+            articles : data,
             isLogin: req.session.user ? true : false
         });
     });

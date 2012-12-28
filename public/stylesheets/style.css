@@ -8,7 +8,7 @@ body {
     line-height: 18px;
     min-width: 800px;
 }
-body, h1, h2, h3, ul, li, dl, dt, p {
+body, h1, h2, h3, ul, li, dl, dt{
     margin: 0;
 }
 a {
@@ -229,6 +229,9 @@ article .text {
 .atag {
     margin-right: 4px;
     color: #3E3E3E;
+}
+.summry {
+    border-bottom: 1px solid #CCCCCC;
 }
 footer {
     width: 100%;

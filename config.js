@@ -9,8 +9,8 @@
 module.exports = {
     appRoot: __dirname,
     staticPath: 'public',
-    viewEngine: 'jade',
-    viewsDir: __dirname + '/views/jade_tpl',
+    viewEngine: 'ejs',
+    viewsDir: __dirname + '/views/ejs_tpl',
     port: 3000,
     dbSettings: {
         cookieSecret: 'shaman',
