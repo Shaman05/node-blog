@@ -83,7 +83,7 @@ textarea,
 }
 .ke-content{
     min-width: 800px;
-    height: 500px;
+    height: 300px;
 }
 .row .ke-container,
 .span-col,
@@ -190,6 +190,7 @@ article .text,
     border-color: #E6E6E6;
     border-style: solid;
     border-width: 0 1px 1px 0;
+    border-radius: 4px;
 }
 .article-info{
     overflow: hidden;
@@ -233,7 +234,7 @@ article .text,
     background-position: -190px -142px;
 }
 .atag {
-    margin-right: 4px;
+    margin-right: 2px;
     color: #3E3E3E;
 }
 footer {

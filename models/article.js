@@ -24,7 +24,7 @@ module.exports = {
         });
     },
 
-    artGet:function(aid, callback){
+    artGet:function(act, aid, callback){
         if(!aid){  //添加新文章
             callback();
             return;
@@ -33,6 +33,10 @@ module.exports = {
             db.open(function(){
                 db.collection('article', function(err, collection){
                     collection.findOne({'_id':_aid}, function(err, data){
+                        if(!act){
+                            data.content = transformContent(data.content);
+                            collection.update({'_id':_aid},{$set:{clicks: data.clicks + 1}});
+                        }
                         callback(err, data);
                         db.close();
                     });
@@ -41,3 +45,7 @@ module.exports = {
         }
     }
 };
+
+function transformContent(content){
+    return content.split('[[split]]').join('');
+}

@@ -64,7 +64,7 @@ exports.artList = function(req, res){
 
 exports.artShow = function(req, res){
     var aid = req.params.id;
-    article.artGet(aid, function(err, data){
+    article.artGet(null, aid, function(err, data){
         res.render('article_show', {
             title: data.title,
             siteData: siteData,
@@ -100,7 +100,7 @@ exports.ad_article_edit = function(req, res){
         act = 'edit';
         title = '编辑文章';
     }
-    article.artGet(aid, function(err, data){
+    article.artGet(act, aid, function(err, data){
         res.render('admin/ad_article_edit', {
             title: title,
             act: act,

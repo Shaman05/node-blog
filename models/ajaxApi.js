@@ -77,7 +77,9 @@ module.exports = {
                 if(!data.aid){
                     data.pubtime = getTime();
                     data.clicks = 0;
-                    data.tags = data.tags.split(',');
+                    data.tags = transformTags(data.tags);
+                    data.summry = transformSummry(data.content);
+                    data.content = data.content;
                     collection.insert(data, function(err){
                         callback(err ? {state:'failed', message:err} : {state:'success', data:data});
                     })
@@ -88,7 +90,8 @@ module.exports = {
                         {$set:{
                             title: data.title,
                             catogery: data.catogery,
-                            tags: data.tags,
+                            tags: transformTags(data.tags),
+                            summry: transformSummry(data.content),
                             content: data.content
                         }},
                         function(err){
@@ -108,4 +111,12 @@ function getTime(){
     var month = now.getMonth() + 1;
     var day = now.getDay();
     return year + '-' + month + '-' + day;
+}
+
+function transformTags(tags){
+    return tags.split(',');
+}
+
+function transformSummry(content){
+    return content.split('[[split]]')[0];
 }

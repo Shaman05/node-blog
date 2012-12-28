@@ -25,10 +25,14 @@ module.exports = (function(){
 
         site: {
             port: process.env.PORT || config.port,
-            root: config.appRoot,
-            staticDir: config.appRoot + '\\' + config.staticPath,
+            root: formatDir(config.appRoot),
+            staticDir: formatDir(config.appRoot + '\\' + config.staticPath),
             viewEngine: config.viewEngine,
-            viewDir: config.viewsDir.replace(/\//g, '\\')
+            viewDir: formatDir(config.viewsDir)
         }
     }
 })();
+
+function formatDir(dir){
+    return dir.replace(/\//g, '\\');
+}

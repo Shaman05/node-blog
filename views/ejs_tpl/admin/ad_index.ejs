@@ -1,6 +1,8 @@
 <% include header %>
-	<section>
-		<h3>服务器信息</h3>
+	<section class="ad-index">
+		<div class="toolbar">
+		    服务器及站点信息：
+        </div>
 		<div class="row">
 		    <span class="span-col">名称:</span>
 		    <span><%= osInfo.hostname %></span>
@@ -8,6 +10,26 @@
 		<div class="row">
             <span class="span-col">操作系统:</span>
             <span><%= osInfo.type %>, 版本：<%= osInfo.release %></span>
+        </div>
+        <div class="row">
+            <span class="span-col">运行端口:</span>
+            <span><%= siteInfo.port %></span>
+        </div>
+        <div class="row">
+            <span class="span-col">站点根目录:</span>
+            <span><%= siteInfo.root %></span>
+        </div>
+        <div class="row">
+            <span class="span-col">静态文件目录:</span>
+            <span><%= siteInfo.staticDir %></span>
+        </div>
+        <div class="row">
+            <span class="span-col">模板引擎:</span>
+            <span><%= siteInfo.viewEngine %></span>
+        </div>
+        <div class="row">
+            <span class="span-col">模板文件目录:</span>
+            <span><%= siteInfo.viewDir %></span>
         </div>
 	</section>
 <% include footer %>
