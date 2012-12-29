@@ -108,9 +108,16 @@ module.exports = {
 function getTime(){
     var now = new Date();
     var year = now.getFullYear();
-    var month = now.getMonth() + 1;
-    var day = now.getDay();
-    return year + '-' + month + '-' + day;
+    var month = formatNumber(now.getMonth() + 1);
+    var date = formatNumber(now.getDate());
+    var h = formatNumber(now.getHours());
+    var m = formatNumber(now.getMinutes());
+    var s = formatNumber(now.getSeconds());
+    return year + '-' + month + '-' + date + ' ' + h + ':' + m + ':' + s;
+}
+
+function formatNumber(number){
+    return number > 10 ? number : '0' + number;
 }
 
 function transformTags(tags){

@@ -39,9 +39,9 @@ exports.about = function(req, res){
 
 exports.artList = function(req, res){
     var query = req.params;
-    var title = '文章列表';
+    var title = siteData.master + ' Node-Blog';
     var filter = {
-        sortBy: null,
+        sortBy: 'pubtime',
         condition: {}
     };
     if(query.tag){

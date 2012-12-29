@@ -165,8 +165,10 @@ nav a {
     font-weight: bold;
     text-shadow: -1px 0 1px #DDDDDD;
 }
+.index,
 .post {
-    padding: 20px 0;
+    padding-top: 10px;
+    padding-bottom:10px;
 }
 .post .title a{
     font-size: 16px;

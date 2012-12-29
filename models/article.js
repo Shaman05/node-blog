@@ -14,7 +14,7 @@ module.exports = {
             db.collection('article', function(err, collection){
                 collection.find(filter.condition,function(err, cursor){
                     if(sortBy && typeof(sortBy) === 'string')
-                        cursor.sort(sortBy);
+                        cursor.sort(sortBy,-1);
                     cursor.toArray(function(err,items){
                         callback(err, items);
                         db.close();

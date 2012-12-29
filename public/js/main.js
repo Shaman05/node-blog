@@ -8,9 +8,7 @@
 
 ;(function($){
     $(function(){
-        $(".prettyprint").each(function(){
-            $(this).html(prettyPrintOne($(this).html()));
-        });
+        prettyPrint();
         $('#login').fancybox();
         $('#loginBtn').click(function(){
             var tipsBox = $('#loginTips');
