@@ -1,4 +1,4 @@
-<% articles.forEach(function(article, index){ %>
+<% if(articles.length > 0){ articles.forEach(function(article, index){ %>
 <div class="post">
 	<h3 class="title"><a href="/article/<%= article._id %>"><%= article.title %></a></h3>
 	<% include article-info-block %>
@@ -6,4 +6,8 @@
 		<%- article.summry %>
 	</div>
 </div>
-<% }) %>
+<% })}else{ %>
+<div class="no-result">
+    <p>抱歉，还没有文章。</p>
+</div>
+<% } %>

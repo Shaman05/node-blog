@@ -304,15 +304,15 @@ footer {
     color: #333333;
     background: -webkit-gradient(linear,0 0,0 100%,from(#FFFFFF),to(#E6E6E6));
 }
-.login-box {
-    height: 162px;
+.fancybox-all {
     width: 300px;
+    padding-bottom: 10px;
 }
 .login-box input {
     width: 190px;
     height: 18px;
 }
-.login-box h3 {
+.fancybox-all h3 {
     padding: 8px 0;
 }
 .login-box .span-col {
@@ -320,6 +320,10 @@ footer {
 }
 .tips-show {
     color: red;
+}
+.no-result {
+    color: red;
+    font-weight: bold;
 }
 
 /*admin style*/

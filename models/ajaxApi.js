@@ -102,6 +102,14 @@ module.exports = {
                 db.close();
             });
         });
+    },
+
+    categoryAdd: function(category, callback){
+        db.open(function(){
+            db.collection('category', function(err, collection){
+                //todo something
+            });
+        });
     }
 };
 

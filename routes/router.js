@@ -44,13 +44,20 @@ exports.artList = function(req, res){
         sortBy: 'pubtime',
         condition: {}
     };
-    if(query.tag){
-        title = '标签 - ' + query.tag + ' 的相关文章';
-        filter.condition = {tags: {$all: [query.tag]}};
+    var tag = query.tag;
+    if(tag){
+        title = '标签 - ' + tag + ' 的相关文章';
+        filter.condition = {tags: {$all: [tag]}};
     }
-    if(query.keyword){
-        title = '关键字为：' + query.keyword + ' 的相关文章';
-        filter.condition = {title: query.keyword};
+    var keyword = query.keyword;
+    if(keyword){
+        title = '关键字为：' + keyword + ' 的相关文章';
+        filter.condition = {title: keyword}; //待修正
+    }
+    var category = query.category;
+    if(category){
+        title = '文章分类 - ' + category;
+        filter.condition = {category: category};
     }
     article.artList(filter, function(err, data){
         res.render('index', {
@@ -138,6 +145,13 @@ exports.artEdit = function(req, res){
     });
 };
 
+exports.categoryAdd = function(req, res){
+    ajax.categoryAdd(req.body.category, function(resJson){
+        res.json(resJson);
+    });
+};
+
+//check
 exports.checkLogin = function(req, res, next){
     if(!req.session.user){
         return res.redirect('/');

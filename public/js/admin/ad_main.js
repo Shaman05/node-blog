@@ -7,9 +7,12 @@
  */
 
 define(function(require, exports, module){
+    require('../fancybox2/jquery.fancybox.pack');
+
     module.exports = {
         init: function(){
             this.events();
+            $("#categoryAdd").fancybox();
         },
 
         events: function(){
@@ -46,6 +49,14 @@ define(function(require, exports, module){
                     }
                 });
             });
+
+            $("#categoryBtn").click(function(){
+                var newCategory = $.trim($('#categoryName').val());
+                if(!newCategory) return;
+                $.post('/admin/category_add', {category: newCategory} ,function(data){
+                    console.log(data);
+                });
+            });
         }
     }
-})
+});

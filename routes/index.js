@@ -15,7 +15,8 @@ module.exports = function(app){
     app.get('/about', routes.about);
     app.get('/article', routes.artList);
     app.get('/tag/:tag', routes.artList);
-    app.get('/keyword/:keyword', routes.artList);
+    app.get('/search/:keyword', routes.artList);
+    app.get('/category/:category', routes.artList);
     app.get('/article/:id', routes.artShow);
 
     //admin
@@ -33,4 +34,5 @@ module.exports = function(app){
     app.get('/admin/logout', routes.logout);
     app.post('/ajax/article_del', routes.artDel);
     app.post('/ajax/article_edit', routes.artEdit);
+    app.post('/admin/category_add', routes.categoryAdd);
 };

@@ -12,9 +12,10 @@ module.exports = {
         var sortBy = filter.sortBy;
         db.open(function(){
             db.collection('article', function(err, collection){
+                console.log(filter.condition)
                 collection.find(filter.condition,function(err, cursor){
                     if(sortBy && typeof(sortBy) === 'string')
-                        cursor.sort(sortBy,-1);
+                        cursor.sort(sortBy, -1); //倒序
                     cursor.toArray(function(err,items){
                         callback(err, items);
                         db.close();
