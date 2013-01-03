@@ -12,7 +12,9 @@
         <div class="row">
             <span class="span-col">分类：</span>
             <select name="category" id="category">
-                <option value="未分类" selected>未分类</option>
+                <% if(categorys.length > 0){ categorys.forEach(function(category, index){ %>
+                    <option value="<%= category.name %>" <% if(category.name==article.category){ %>selected<% } %>><%= category.name %></option>
+                <% })} %>
             </select>
         </div>
         <div class="row">
@@ -42,7 +44,9 @@
         <div class="row">
             <span class="span-col">分类：</span>
             <select name="category" id="category">
-                <option value="未分类" selected>未分类</option>
+                <% if(categorys.length > 0){ categorys.forEach(function(category, index){ %>
+                    <option value="<%= category.name %>" <% if(category.name=="未分类"){ %>selected<% } %>><%= category.name %></option>
+                <% })} %>
             </select>
         </div>
         <div class="row">

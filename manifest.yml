@@ -1,0 +1,17 @@
+---
+applications:
+  .:
+    name: shaman
+    framework:
+      name: node
+      info:
+        mem: 64M
+        description: Node.js Application
+        exec: 
+    infra: ap-aws
+    url: ${name}.${target-base}
+    mem: 64M
+    instances: 1
+    services:
+      node-blog:
+        type: mongodb

@@ -51,10 +51,12 @@ define(function(require, exports, module){
             });
 
             $("#categoryBtn").click(function(){
+                var tipsBox = $("#categoryTips");
+                tipsBox.hide();
                 var newCategory = $.trim($('#categoryName').val());
                 if(!newCategory) return;
                 $.post('/admin/category_add', {category: newCategory} ,function(data){
-                    console.log(data);
+                    tipsBox.html(data.message).fadeIn(500);
                 });
             });
         }

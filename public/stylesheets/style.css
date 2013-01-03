@@ -206,7 +206,7 @@ article .text,
     border-radius: 2px;
 }
 .article-info span:hover,
-.article-info span:hover .atag{
+.article-info span:hover .aicon{
     background-color: #636363;
     color: #FDFDFD;
 }
@@ -235,7 +235,7 @@ article .text,
 .clicks {
     background-position: -190px -142px;
 }
-.atag {
+.aicon {
     margin-right: 2px;
     color: #3E3E3E;
 }

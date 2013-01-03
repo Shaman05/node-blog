@@ -84,12 +84,13 @@ module.exports = {
                         callback(err ? {state:'failed', message:err} : {state:'success', data:data});
                     })
                 }else{
+                    console.log(data)
                     var _aid = new mongo.ObjectID(data.aid);
                     collection.update(
                         {'_id':_aid},
                         {$set:{
                             title: data.title,
-                            catogery: data.catogery,
+                            category: data.category,
                             tags: transformTags(data.tags),
                             summry: transformSummry(data.content),
                             content: data.content
@@ -107,7 +108,27 @@ module.exports = {
     categoryAdd: function(category, callback){
         db.open(function(){
             db.collection('category', function(err, collection){
-                //todo something
+                collection.findOne({name:category},function(err, data){
+                    var resJson = {
+                        state: 'failed'
+                    };
+                    if(err){
+                        resJson.message = err;
+                    }else{
+                        if(data){
+                            resJson.message = '栏目已存在！';
+                        }else{
+                            collection.insert({name:category},function(err){
+                                if(!err){
+                                    resJson.state = 'success';
+                                    resJson.message = '添加成功！';
+                                }
+                            });
+                        }
+                    }
+                    callback(resJson);
+                    db.close();
+                })
             });
         });
     }

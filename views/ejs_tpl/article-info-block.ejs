@@ -1,10 +1,13 @@
 <div class="article-info">
 	<span title="最后更新时间"><i class="pubtime">pubtime:</i><%= article.pubtime %></span>
-	<span title="分类"><i class="category">category:</i><%= article.category %></span>
+	<span>
+	    <i class="category">category:</i>
+	    <a class="aicon" href="/category/<%= article.category %>" title="查看分类：<%= article.category %>"><%= article.category %></a>
+    </span>
 	<span>
 	    <i class="tags">tags:</i>
 	    <% article.tags.forEach(function(tag, index){ %>
-	    <a class="atag" href="/tag/<%= tag %>" title="tag : <%= tag %>"><%= tag %></a>
+	    <a class="aicon" href="/tag/<%= tag %>" title="tag : <%= tag %>"><%= tag %></a>
 	    <% }) %>
     </span>
 	<span title="点击次数"><i class="clicks">clicks:</i><%= article.clicks %></span>
