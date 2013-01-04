@@ -1,5 +1,8 @@
 node-blog: Nodejser Blog
 version: 0.1
+
+demo: 部署在appfog上的 http://www.nodejser.me/
+
 =========
 使用技术：
 
