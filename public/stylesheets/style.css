@@ -137,6 +137,9 @@ header {
     right: 40px;
     top: 8px
 }
+.search-box {
+    top: 45px;
+}
 .home-page{
     color: #FFF;
     margin-right: 20px;

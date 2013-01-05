@@ -24,5 +24,11 @@
                     tipsBox.html(data.message).fadeIn(500);
             });
         });
+        $("#keyword").keyup(function(e){
+            var keyword = $.trim($(this).val());
+            if(e.keycode == 13 && keyword){
+                return false;
+            }
+        });
     });
 })(jQuery);

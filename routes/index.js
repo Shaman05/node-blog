@@ -15,6 +15,7 @@ module.exports = function(app){
     app.get('/about', routes.about);
     app.get('/article', routes.artList);
     app.get('/tag/:tag', routes.artList);
+    app.get('/search', routes.search);
     app.get('/search/:keyword', routes.artList);
     app.get('/category/:category', routes.artList);
     app.get('/article/:id', routes.artShow);

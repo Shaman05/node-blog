@@ -35,11 +35,17 @@ exports.about = function(req, res){
         siteData: siteData,
         isLogin: req.session.user ? true : false
     })
-}
+};
+
+exports.search = function(req, res){
+    var keyword = req.query.keyword;
+    res.redirect('/search/' + keyword);
+};
 
 exports.artList = function(req, res){
     var query = req.params;
     var title = siteData.master + ' Node-Blog';
+    var reg = null;
     var filter = {
         sortBy: 'pubtime',
         condition: {}
@@ -51,8 +57,9 @@ exports.artList = function(req, res){
     }
     var keyword = query.keyword;
     if(keyword){
+        reg = new RegExp(keyword, "g");
         title = '关键字为：' + keyword + ' 的相关文章';
-        filter.condition = {title: keyword}; //待修正
+        filter.condition = {title: reg};
     }
     var category = query.category;
     if(category){
@@ -60,6 +67,10 @@ exports.artList = function(req, res){
         filter.condition = {category: category};
     }
     article.artList(filter, function(err, data){
+        if(keyword){
+            for(var i = 0, len = data.length; i < len; i++)
+                data[i].title = data[i].title.replace(reg, '<strong style="color: red;">' + keyword + '</strong>');
+        }
         res.render('index', {
             title: title,
             siteData: siteData,
