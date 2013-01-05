@@ -19,6 +19,7 @@ module.exports = function(app){
     app.get('/search/:keyword', routes.artList);
     app.get('/category/:category', routes.artList);
     app.get('/article/:id', routes.artShow);
+    app.get('/archives', routes.archives);
 
     //admin
     app.get('/admin', routes.checkLogin);

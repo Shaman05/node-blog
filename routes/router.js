@@ -17,6 +17,7 @@ var siteData = {
     powerUrl: 'http://github.com/Shaman05/node-blog'
 };
 
+//front routes
 exports.index = function(req, res){
     var sortBy = '_id';
     article.artList(sortBy, function(err, data){
@@ -92,6 +93,18 @@ exports.artShow = function(req, res){
     });
 };
 
+exports.archives = function(req, res){
+    article.archives(function(err, data){
+        res.render('archives', {
+            title: '文章归档',
+            siteData: siteData,
+            archives: data,
+            isLogin: req.session.user ? true : false
+        });
+    });
+};
+
+//admin routes
 exports.ad_index = function(req, res){
     res.render('admin/ad_index', {
         title: '后台管理首页',

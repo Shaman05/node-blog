@@ -1,0 +1,12 @@
+<% include header %>
+	<section>
+	    <% for(var year in archives){ %>
+	        <h3><%= year %></h3>
+	        <ul>
+	            <% archives[year].forEach(function(article, index){ %>
+	                <li><a href="/article/<%= article._id %>"><%= article.title %></a><span>(<%= article.pubtime %>)</span></li>
+	            <% }) %>
+	        </ul>
+	    <% } %>
+	</section>
+<% include footer %>
