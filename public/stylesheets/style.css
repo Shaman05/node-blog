@@ -168,6 +168,9 @@ nav a {
     font-weight: bold;
     text-shadow: -1px 0 1px #DDDDDD;
 }
+nav a:hover {
+    color: #008EE8;
+}
 .index,
 .post {
     padding-top: 10px;
@@ -188,7 +191,8 @@ article .title {
     line-height: 32px;
 }
 article .text,
-.summry {
+.summry,
+.card {
     padding: 12px 20px;
     margin-top: 2px;
     background: #F6F6F6;
@@ -242,6 +246,31 @@ article .text,
     margin-right: 2px;
     color: #3E3E3E;
 }
+.archives,
+.about {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.archive-wrap {
+    position: relative;
+    margin-left: 60px;
+    border-left: 5px solid #EFEFEF;
+}
+.archives h3 {
+    padding: 0 8px;
+    float: left;
+    margin-left: -60px;
+    font-size: 14px;
+}
+.archives ul {
+    margin-bottom: 12px;
+    list-style-position: inside;
+    padding-left: 1em;
+}
+.archives .date {
+    margin-left: 4px;
+    color: #666;
+}
 footer {
     width: 100%;
     position: absolute;
@@ -260,7 +289,6 @@ footer {
     margin-left: 6px;
     color: #008EE8;
 }
-
 .btn {
     display: inline-block;
     zoom: 1;

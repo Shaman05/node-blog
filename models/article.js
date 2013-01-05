@@ -3,6 +3,7 @@
  * 1.所有文章的信息获取；
  * 2.指定id文章的内容获取；
  * 3.获取所有分类
+ * 4.文章归档
  * ...待添加
  */
 var mongo = require('../node_modules/mongodb');
