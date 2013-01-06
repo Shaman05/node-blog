@@ -1,14 +1,16 @@
 <% include header %>
 	<section class="archives">
 	    <div class="archive-wrap" id="archives">
-	    <% for(var year in archives){ %>
-	        <h3><%= year %></h3>
+	    <% archives.forEach(function(articles, index){ %>
+	        <h3><%= articles['year'] %></h3>
 	        <ul>
-	            <% archives[year].forEach(function(article, index){ %>
-	                <li><a href="/article/<%= article._id %>"><%= article.title %></a><span class="date">(<%= article.pubtime %>)</span></li>
-	            <% }) %>
+	            <% if(articles['list'].length > 0){ articles['list'].forEach(function(article, index){ %>
+	                <li><a href="/article/<%= article._id %>"><%= article.title %></a><span class="date">(<%= article.pubtime.split(" ")[0] %>)</span></li>
+	            <% })}else{ %>
+	                <li>这家伙很懒，没有一篇文章！</li>
+	            <% } %>
 	        </ul>
-	    <% } %>
+	    <% }) %>
 	    </div>
 	</section>
 <% include footer %>

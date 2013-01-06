@@ -47,16 +47,21 @@ module.exports = {
                 collection.find({},function(err, cursor){
                     cursor.sort('pubtime', -1);
                     cursor.toArray(function(err,items){
-                        var artList = {};
+                        var artList = [];
+                        artList.push({
+                            year: new Date().getFullYear(),
+                            list: []
+                        });
                         for(var i = 0, len = items.length; i < len; i++){
                             var item = items[i];
                             var year = getPubYear(item.pubtime);
-                            if(!artList[year])artList[year] = [];
-                            artList[year].push({
-                                _id: item._id,
-                                pubtime: item.pubtime.split(" ")[0],
-                                title: item.title
-                            });
+                            if(year != artList[artList.length-1].year){
+                                artList.push({
+                                    year: year,
+                                    list: []
+                                });
+                            }
+                            artList[artList.length-1].list.push(item);
                         }
                         callback(err, artList);
                         db.close();
@@ -104,5 +109,5 @@ function transformContent(content){
 }
 
 function getPubYear(pubtime){
-    return pubtime.split('-')[0];
+    return parseInt(pubtime.split('-')[0]);
 }

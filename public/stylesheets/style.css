@@ -17,6 +17,11 @@ a {
 a:hover {
     text-decoration: underline;
 }
+nav a:hover,
+section a,
+.footer-c a {
+    color: #008EE8;
+}
 select,
 input,
 textarea {
@@ -34,7 +39,8 @@ select {
 input,
 textarea {
     padding: 4px;
-    line-height: 18px;
+    height: 16px;
+    line-height: 16px;
     transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
     -webkit-transition: border linear 0.2s, box-shadow linear 0.2s; 
 }
@@ -168,9 +174,6 @@ nav a {
     font-weight: bold;
     text-shadow: -1px 0 1px #DDDDDD;
 }
-nav a:hover {
-    color: #008EE8;
-}
 .index,
 .post {
     padding-top: 10px;
@@ -216,6 +219,7 @@ article .text,
 .article-info span:hover .aicon{
     background-color: #636363;
     color: #FDFDFD;
+    text-decoration: none;
 }
 .article-info span:hover i {
     background-image: url("../images/glyphicons-halflings-white.png");
@@ -261,6 +265,7 @@ article .text,
     float: left;
     margin-left: -60px;
     font-size: 14px;
+    color: #787878;
 }
 .archives ul {
     margin-bottom: 12px;
@@ -287,7 +292,6 @@ footer {
 }
 .footer-c a {
     margin-left: 6px;
-    color: #008EE8;
 }
 .btn {
     display: inline-block;
