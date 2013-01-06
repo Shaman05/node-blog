@@ -7,7 +7,8 @@ var express = require('express'),
     path = require('path'),
     router = require('./routes'),
     mongoStore = require('./node_modules/connect-mongo')(express),
-    config = require('./config');
+    config = require('./config'),
+    install = require('./install');
 var app = express();
 
 app.configure(function(){
@@ -33,6 +34,7 @@ app.configure('development', function(){
     app.use(express.errorHandler());
 });
 
+app.get('/install', install.routeInstall);
 router(app);
 
 http.createServer(app).listen(app.get('port'), function(){
