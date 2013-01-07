@@ -9,6 +9,7 @@
 var article = require('../models/article');
 var ajax = require('../models/ajaxApi');
 var sys = require('../models/sys');
+var fs = require('fs');
 
 var siteData = {
     master: 'Shaman',
@@ -141,6 +142,38 @@ exports.ad_article_edit = function(req, res){
             categorys: categorys,
             article: data
         });
+    });
+};
+
+exports.upload_img = function(req, res){
+    var ext = {
+        'image/gif': '.gif',
+        'image/png': '.png',
+        'image/jpg': '.jpg',
+        'image/jpeg': '.jpg'
+    };
+    var maxSize = 1024 * 800; //最大允许上传800k
+    var thisSize = req.files.imgFile.size;
+    var type = req.files.imgFile.type;
+    var tmpfile = req.files.imgFile.path;
+    var targetfile = './public/KE/attached/' + req.files.imgFile.name;
+    if(thisSize > maxSize){
+        res.end('上传失败！文件大小不能大于800K');
+    }
+    if(!ext[type]){
+        fs.unlink(tmpfile, function(err){
+            if(err){
+                res.end('移除临时文件出错！');
+            }
+            res.end('上传失败！只允许上传图片');
+        });
+    }
+    fs.rename(tmpfile, targetfile, function(err){
+        if(err){
+            res.end('rename文件出错！');
+        }else{
+            res.end('上传成功!size: ' + thisSize + 'bytes , path: ' + targetfile);
+        }
     });
 };
 

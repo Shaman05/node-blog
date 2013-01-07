@@ -30,6 +30,7 @@ module.exports = function(app){
     app.get('/admin/article_edit', routes.ad_article_edit);
     app.get('/admin/article_edit/:id', routes.checkLogin);
     app.get('/admin/article_edit/:id', routes.ad_article_edit);
+    app.post('/KE/upload_img', routes.upload_img);
 
     //ajax
     app.post('/ajax/login', routes.login);
