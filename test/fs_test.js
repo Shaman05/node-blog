@@ -8,7 +8,7 @@
 
 var fs = require('fs');
 
-fs.readFile('../../install/install.log','UTF-8',function(err, content){
+fs.readFile('./install/install.log','UTF-8',function(err, content){
     if(err){
         console.log(err);
     }else{
@@ -22,5 +22,4 @@ fs.readdir('./', function(err, files){
     console.log('--------');
 });
 
-
-console.log(fs.readdirSync('./'));
+console.log(fs.existsSync('./install/install.lock'));
