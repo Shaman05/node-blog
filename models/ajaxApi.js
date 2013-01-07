@@ -75,7 +75,7 @@ module.exports = {
         db.open(function(){
             db.collection('article', function(err, collection){
                 if(!data.aid){
-                    data.pubtime = getTime();
+                    data.pubtime = data.pubtime || getTime();
                     data.clicks = 0;
                     data.tags = transformTags(data.tags);
                     data.summry = transformSummry(data.content);
@@ -84,12 +84,12 @@ module.exports = {
                         callback(err ? {state:'failed', message:err} : {state:'success', data:data});
                     })
                 }else{
-                    console.log(data)
                     var _aid = new mongo.ObjectID(data.aid);
                     collection.update(
                         {'_id':_aid},
                         {$set:{
                             title: data.title,
+                            pubtime: data.pubtime || getTime(),
                             category: data.category,
                             tags: transformTags(data.tags),
                             summry: transformSummry(data.content),

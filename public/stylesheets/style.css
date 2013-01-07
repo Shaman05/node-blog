@@ -276,6 +276,9 @@ article .text,
     margin-left: 4px;
     color: #666;
 }
+.about h3 {
+    margin-bottom: 4px;
+}
 footer {
     width: 100%;
     position: absolute;
@@ -353,6 +356,7 @@ footer {
 .login-box .span-col {
     width: 58px;    
 }
+.tips,
 .tips-show {
     color: red;
 }

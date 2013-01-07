@@ -12,7 +12,7 @@ var sys = require('../models/sys');
 
 var siteData = {
     master: 'Shaman',
-    description: 'nodejser , 关注nodejs及其相关的技术',
+    description: '专注WEB前端开发',
     power: 'Node-Blog',
     powerUrl: 'http://github.com/Shaman05/node-blog'
 };
@@ -114,8 +114,11 @@ exports.ad_index = function(req, res){
 };
 
 exports.ad_article = function(req, res){
-    var sortBy = '_id';
-    article.artList(sortBy, function(err, data){
+    var filter = {
+        sortBy: 'pubtime',
+        condition: {}
+    };
+    article.artList(filter, function(err, data){
         res.render('admin/ad_article', {
             title: '文章管理列表',
             dataList: data

@@ -10,6 +10,11 @@
             <input id="aid" type="hidden" value="<%= article._id %>">
         </div>
         <div class="row">
+            <span class="span-col">发布时间：</span>
+            <input id="pubtime" type="text" value="<%= article.pubtime %>">
+            <span class="tips">(手动输入的时候确保正确的时间格式，如：2012-09-17 15:32:10)</span>
+        </div>
+        <div class="row">
             <span class="span-col">分类：</span>
             <select name="category" id="category">
                 <% if(categorys.length > 0){ categorys.forEach(function(category, index){ %>
@@ -40,6 +45,11 @@
         <div class="row">
             <span class="span-col">标题：</span>
             <input id="title" type="text" size="60">
+        </div>
+        <div class="row">
+            <span class="span-col">发布时间：</span>
+            <input id="pubtime" type="text" placeholder="默认当前时间">
+            <span class="tips">(手动输入的时候确保正确的时间格式，如：2012-09-17 15:32:10)</span>
         </div>
         <div class="row">
             <span class="span-col">分类：</span>
