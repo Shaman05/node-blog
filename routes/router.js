@@ -157,15 +157,12 @@ exports.upload_img = function(req, res){
     var type = req.files.imgFile.type;
     var tmpFile = req.files.imgFile.path;
     var targetFile = './public/KE/attached/' + req.files.imgFile.name;
-    if(thisSize > maxSize){
-        res.end('上传失败！文件大小不能大于800K');
-    }
-    if(!ext[type]){
-        fs.unlink(tmpfile, function(err){
+    if(thisSize > maxSize || !ext[type]){
+        fs.unlink(tmpFile, function(err){
             if(err){
                 res.end('移除临时文件出错！');
             }
-            res.end('上传失败！只允许上传图片');
+            res.end('上传失败！原因：1.文件大小不能大于800K 2.只允许上传图片');
         });
     }
     fs.rename(tmpFile, targetFile, function(err){
