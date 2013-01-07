@@ -10,7 +10,8 @@ var fs = require('fs');
 
 module.exports = {
     isInstalled: function(){
-       return fs.existsSync('./install/install.lock');
+        //console.log(__dirname);
+        return fs.existsSync('./install/install.lock');
     },
     routeInstall: function(req, res){
         if(module.exports.isInstalled()){
