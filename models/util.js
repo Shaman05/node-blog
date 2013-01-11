@@ -7,10 +7,6 @@
  */
 
 module.exports = {
-    transformContent: function(content){
-        return content.split('[[split]]').join('');
-    },
-
     getPubYear: function(pubtime){
         return parseInt(pubtime.split('-')[0]);
     },
@@ -28,6 +24,10 @@ module.exports = {
         function formatNumber(number){
             return number > 10 ? number : '0' + number;
         }
+    },
+
+    transformContent: function(content){
+        return content.split('[[split]]').join('');
     },
 
     transformTags: function(tags){

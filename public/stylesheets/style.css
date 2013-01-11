@@ -342,6 +342,25 @@ footer {
     color: #333333;
     background: -webkit-gradient(linear,0 0,0 100%,from(#FFFFFF),to(#E6E6E6));
 }
+.pager li {
+    display: inline-block;
+    line-height: 25px;
+    margin-right: 3px;
+}
+.pager a {
+    display: block;
+    color: #f2f2f2;
+    background-color: #262626;
+    text-shadow: 1px 0 0 #101011;
+    padding: 0 10px;
+    border-radius: 4px;
+}
+.pager a:hover {
+    text-decoration: underline;
+}
+.pager .current {
+    color: #FF9900;
+}
 .fancybox-all {
     width: 300px;
     padding-bottom: 10px;

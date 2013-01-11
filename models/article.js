@@ -10,17 +10,32 @@ var mongo = require('../node_modules/mongodb');
 var db = require('./db');
 var util = require('./util');
 
+var paging = {
+    total: 0,
+    pages: 0,
+    size: 2,
+    narrow: 3,
+    curPage: 0
+};
+
 module.exports = {
     artList:function(filter, callback){
         var sortBy = filter.sortBy;
+        sortBy = sortBy && typeof(sortBy) === 'string' ? [sortBy, 'desc'] : []; //默认倒序
+        var page = filter.page;
         db.open(function(){
             db.collection('article', function(err, collection){
-                collection.find(filter.condition,function(err, cursor){
-                    if(sortBy && typeof(sortBy) === 'string')
-                        cursor.sort(sortBy, -1); //倒序
-                    cursor.toArray(function(err,items){
-                        callback(err, items);
-                        db.close();
+                paging.curPage = parseInt(page);
+                collection.find(filter.condition).count(function(err, total){
+                    var size = paging.size;
+                    paging.total = total;
+                    paging.pages = Math.ceil(total/size);
+                    console.log(paging)
+                    collection.find(filter.condition,{limit:size, skip:size*(page-1), sort:[sortBy]},function(err, cursor){
+                        cursor.toArray(function(err,items){
+                            callback(err, items, paging);
+                            db.close();
+                        });
                     });
                 });
             });

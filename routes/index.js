@@ -11,7 +11,6 @@ var routes = require('./router');
 module.exports = function(app){
     //front
     app.get('/', routes.artList);
-    app.get('/home', routes.artList);
     app.get('/about', routes.about);
     app.get('/article', routes.artList);
     app.get('/tag/:tag', routes.artList);

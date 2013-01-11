@@ -1,7 +1,7 @@
 <% include header %>
 	<section>
 		<div class="toolbar">
-            <a class="btn btn-green" href="./article_edit">添加文章</a>
+            <a class="btn btn-green" href="/admin/article_edit">添加文章</a>
             <a id="categoryAdd" class="btn btn-green" href="#categoryBox" title="Add category">添加分类</a>
         </div>
         <div class="article-table">
@@ -41,7 +41,7 @@
                             <%= article.clicks %>
                         </td>
                         <td align="center">
-                            <a href="./article_edit/<%= article._id%>" class="btn btn-blue">编辑</a>
+                            <a href="/admin/article_edit/<%= article._id%>" class="btn btn-blue">编辑</a>
                             &nbsp;&nbsp;
                             <a href="javascript:" class="btn btn-gray" data-del-id="<%= article._id%>">删除</a>
                         </td>

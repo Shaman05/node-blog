@@ -50,6 +50,7 @@ exports.artList = function(req, res){
     var reg = null;
     var filter = {
         sortBy: 'pubtime',
+        page: req.query.p || 1,
         condition: {}
     };
     var tag = query.tag;
@@ -68,7 +69,7 @@ exports.artList = function(req, res){
         title = '文章分类 - ' + category;
         filter.condition = {category: category};
     }
-    article.artList(filter, function(err, data){
+    article.artList(filter, function(err, data, paging){
         if(keyword){
             for(var i = 0, len = data.length; i < len; i++)
                 data[i].title = data[i].title.replace(reg, '<strong style="color: red;">' + keyword + '</strong>');
@@ -77,6 +78,7 @@ exports.artList = function(req, res){
             title: title,
             siteData: siteData,
             articles : data,
+            paging: paging,
             isLogin: req.session.user ? true : false
         });
     });
@@ -117,6 +119,7 @@ exports.ad_index = function(req, res){
 exports.ad_article = function(req, res){
     var filter = {
         sortBy: 'pubtime',
+        page: req.query.p || 1,
         condition: {}
     };
     article.artList(filter, function(err, data){
