@@ -9,6 +9,7 @@
 var mongo = require('../node_modules/mongodb');
 var db = require('./db');
 var crypto = require('crypto');
+var util = require('./util');
 
 module.exports = {
     login: function(user, callback){
@@ -42,25 +43,6 @@ module.exports = {
         });
     },
 
-    /*
-    logout: function(user, callback){
-        db.open(function(){
-            db.collection('users', function(err, collection){
-                collection.remove({'name':user}, function(err){
-                    var resJson = {};
-                    if(err){
-                        resJson.stats = 'failed';
-                    }else{
-                        resJson.stats = 'success';
-                    }
-                    callback(resJson);
-                    db.close();
-                });
-            });
-        });
-    },
-    */
-
     artDel: function(aid, callback){
         var _aid = new mongo.ObjectID(aid);
         db.open(function(){
@@ -77,10 +59,10 @@ module.exports = {
         db.open(function(){
             db.collection('article', function(err, collection){
                 if(!data.aid){
-                    data.pubtime = data.pubtime || getTime();
+                    data.pubtime = data.pubtime || util.getTime();
                     data.clicks = 0;
-                    data.tags = transformTags(data.tags);
-                    data.summry = transformSummry(data.content);
+                    data.tags = util.transformTags(data.tags);
+                    data.summry = util.transformSummry(data.content);
                     data.content = data.content;
                     collection.insert(data, function(err){
                         callback(err ? {state:'failed', message:err} : {state:'success', data:data});
@@ -91,10 +73,10 @@ module.exports = {
                         {'_id':_aid},
                         {$set:{
                             title: data.title,
-                            pubtime: data.pubtime || getTime(),
+                            pubtime: data.pubtime || util.getTime(),
                             category: data.category,
-                            tags: transformTags(data.tags),
-                            summry: transformSummry(data.content),
+                            tags: util.transformTags(data.tags),
+                            summry: util.transformSummry(data.content),
                             content: data.content
                         }},
                         function(err){
@@ -135,26 +117,3 @@ module.exports = {
         });
     }
 };
-
-function getTime(){
-    var now = new Date();
-    var year = now.getFullYear();
-    var month = formatNumber(now.getMonth() + 1);
-    var date = formatNumber(now.getDate());
-    var h = formatNumber(now.getHours());
-    var m = formatNumber(now.getMinutes());
-    var s = formatNumber(now.getSeconds());
-    return year + '-' + month + '-' + date + ' ' + h + ':' + m + ':' + s;
-}
-
-function formatNumber(number){
-    return number > 10 ? number : '0' + number;
-}
-
-function transformTags(tags){
-    return tags.split(',');
-}
-
-function transformSummry(content){
-    return content.split('[[split]]')[0];
-}

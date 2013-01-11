@@ -8,6 +8,7 @@
  */
 var mongo = require('../node_modules/mongodb');
 var db = require('./db');
+var util = require('./util');
 
 module.exports = {
     artList:function(filter, callback){
@@ -32,7 +33,7 @@ module.exports = {
             db.collection('article', function(err, collection){
                 collection.findOne({'_id':_aid}, function(err, data){
                     //前台访问，点击次数+1
-                    data.content = transformContent(data.content);
+                    data.content = util.transformContent(data.content);
                     collection.update({'_id':_aid},{$set:{clicks: data.clicks + 1}});
                     callback(err, data);
                     db.close();
@@ -54,7 +55,7 @@ module.exports = {
                         });
                         for(var i = 0, len = items.length; i < len; i++){
                             var item = items[i];
-                            var year = getPubYear(item.pubtime);
+                            var year = util.getPubYear(item.pubtime);
                             if(year != artList[artList.length-1].year){
                                 artList.push({
                                     year: year,
@@ -103,11 +104,3 @@ module.exports = {
         });
     }
 };
-
-function transformContent(content){
-    return content.split('[[split]]').join('');
-}
-
-function getPubYear(pubtime){
-    return parseInt(pubtime.split('-')[0]);
-}
