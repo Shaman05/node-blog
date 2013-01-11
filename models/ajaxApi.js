@@ -42,6 +42,7 @@ module.exports = {
         });
     },
 
+    /*
     logout: function(user, callback){
         db.open(function(){
             db.collection('users', function(err, collection){
@@ -58,6 +59,7 @@ module.exports = {
             });
         });
     },
+    */
 
     artDel: function(aid, callback){
         var _aid = new mongo.ObjectID(aid);

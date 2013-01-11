@@ -22,6 +22,7 @@ module.exports = function(app){
     app.get('/archives', routes.archives);
 
     //admin
+    app.get('/admin/logout', routes.logout);
     app.get('/admin', routes.checkLogin);
     app.get('/admin', routes.ad_index);
     app.get('/admin/article', routes.checkLogin);
@@ -34,7 +35,6 @@ module.exports = function(app){
 
     //ajax
     app.post('/ajax/login', routes.login);
-    app.get('/admin/logout', routes.logout);
     app.post('/ajax/article_del', routes.artDel);
     app.post('/ajax/article_edit', routes.artEdit);
     app.post('/admin/category_add', routes.categoryAdd);
