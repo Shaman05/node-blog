@@ -1,4 +1,4 @@
-<% if(articles.length > 0){ articles.forEach(function(article, index){ %>
+<% if(articles && articles.length > 0){ articles.forEach(function(article, index){ %>
 <div class="post">
 	<h3 class="title"><a href="/article/<%= article._id %>"><%- article.title %></a></h3>
 	<% include article-info-block %>

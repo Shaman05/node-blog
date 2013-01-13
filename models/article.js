@@ -13,9 +13,9 @@ var util = require('./util');
 var paging = {
     total: 0,
     pages: 0,
-    size: 2,
-    narrow: 3,
-    curPage: 0
+    size: 5,
+    narrow: 5,
+    curPage: 1
 };
 
 module.exports = {
@@ -30,7 +30,6 @@ module.exports = {
                     var size = paging.size;
                     paging.total = total;
                     paging.pages = Math.ceil(total/size);
-                    console.log(paging)
                     collection.find(filter.condition,{limit:size, skip:size*(page-1), sort:[sortBy]},function(err, cursor){
                         cursor.toArray(function(err,items){
                             callback(err, items, paging);

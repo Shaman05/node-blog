@@ -342,6 +342,9 @@ footer {
     color: #333333;
     background: -webkit-gradient(linear,0 0,0 100%,from(#FFFFFF),to(#E6E6E6));
 }
+.pager {
+    padding: 4px 0;
+}
 .pager li {
     display: inline-block;
     line-height: 25px;
@@ -360,6 +363,9 @@ footer {
 }
 .pager .current {
     color: #FF9900;
+}
+.pager .current:hover {
+    text-decoration: none;
 }
 .fancybox-all {
     width: 300px;

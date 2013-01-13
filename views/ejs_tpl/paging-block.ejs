@@ -1,45 +1,40 @@
 <div class="paging">
-    总条数：<%= paging.total %> ,共 <%= paging.pages %> 页 , 当前页：<%= paging.curPage %> , 每页显示 <%= paging.size %> 条 , 分页按钮个数 <%= paging.narrow %>。
+    查询结果：共 <%= paging.total %> 条记录 , 每页 <%= paging.size %> 条 , 共 <%= paging.pages %> 页。
     <ul class="pager">
         <%
-            var html = [],
-                startPage = 1,
-                prevPage = paging.curPage - 1,
-                nextPage = paging.curPage + 1;
-            if(prevPage < 1){
-                html.push('<li><a href="javascript:">First</a></li>');
-                html.push('<li><a href="javascript:">Prev</a></li>');
-            }else{
-                html.push('<li><a href="?p=1">First</a></li>');
-                html.push('<li><a href="?p=' + (paging.curPage - 1) + '>">Prev</a></li>');
-            }
-            if(paging.curPage % paging.narrow == 0){
-                startPage = paging.curPage - paging.narrow - 1;
-            }else{
-                startPage = paging.curPage - paging.curPage % paging.narrow + 1;
-            }
-            if(startPage > paging.narrow){
-                html.push('<li><a href="?p=' + (paging.curPage - 1) + '">...</a></li>');
-            }
-            for(var i = startPage; i < paging.narrow; i++){
-                if (i > paging.pages) break;
-                if (i == paging.curPage) {
-                    html.push('<li><a href="javascript:" class="current">' + i + '</a></li>');
-                } else {
-                    html.push('<li><a href="?p=' + i + '">' + i + '</a></li>');
+            var html = [];
+            if(paging.curPage > 0 && paging.curPage <= paging.pages){
+                var startPage = 1,
+                    prevPage = paging.curPage - 1,
+                    nextPage = paging.curPage + 1,
+                    cp = Math.ceil(paging.curPage/paging.narrow),
+                    tp = Math.ceil(paging.pages/paging.narrow);
+                if(paging.curPage > paging.narrow){
+                    html.push('<li><a href="?p=1">First</a></li>');
+                    html.push('<li><a href="?p=' + (paging.curPage - 1) + '">Prev</a></li>');
+                    html.push('<li><a href="?p=' + (cp - 1)*paging.narrow + '">...</a></li>');
                 }
+                if(cp > 1){
+                    startPage = (cp-1)*paging.narrow + 1;
+                }
+                for(var i = startPage; i < cp*paging.narrow + 1; i++){
+                    if (i > paging.pages) break;
+                    if (i == paging.curPage) {
+                        html.push('<li><a href="javascript:" class="current">' + i + '</a></li>');
+                    } else {
+                        html.push('<li><a href="?p=' + i + '">' + i + '</a></li>');
+                    }
+                }
+                if(cp < tp){
+                    html.push('<li><a href="?p=' + (cp*paging.narrow + 1) + '">...</a></li>');
+                    html.push('<li><a href="?p=' + nextPage + '">Next</a></li>');
+                    html.push('<li><a href="?p=' + paging.pages + '">Last</a></li>');
+                }
+                html = html.join('');
+            }else{
+                html = 'error!';
             }
-            if(paging.pages >= startPage + paging.narrow){
-                html.push('<li><a href="?p=' + (paging.curPage + 1) + '">...</a></li>');
-            }
-            if(nextPage > paging.pages) {
-                html.push('<li><a href="javascript:">Next</a></li>');
-                html.push('<li><a href="javascript:">Last</a></li>');
-            } else {
-                html.push('<li><a href="?p=' + nextPage + '">Next</a></li>');
-                html.push('<li><a href="?p=' + paging.pages + '">Last</a></li>');
-            }
-            html = html.join('');
+
         %>
         <%- html %>
     </ul>
