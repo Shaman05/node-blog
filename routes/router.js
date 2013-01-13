@@ -122,9 +122,10 @@ exports.ad_article = function(req, res){
         page: req.query.p || 1,
         condition: {}
     };
-    article.artList(filter, function(err, data){
+    article.artList(filter, function(err, data, paging){
         res.render('admin/ad_article', {
             title: '文章管理列表',
+            paging: paging,
             dataList: data
         });
     });
@@ -163,16 +164,21 @@ exports.upload_img = function(req, res){
     if(thisSize > maxSize || !ext[type]){
         fs.unlink(tmpFile, function(err){
             if(err){
-                res.end('移除临时文件出错！');
+                res.end('Remove temp file error!');
             }
-            res.end('上传失败！原因：1.文件大小不能大于800K 2.只允许上传图片');
+            res.end('Failed! Error：1.file size > 800K. 2.only image file can be upload.');
         });
+        return;
     }
     fs.rename(tmpFile, targetFile, function(err){
         if(err){
-            res.end('rename文件出错！');
+            res.end('Rename file error!');
         }else{
-            res.end('上传成功!size: ' + thisSize + 'bytes , path: ' + targetFile);
+            res.writeHead(200, {
+                'Content-Type': 'text/html',
+                'charset': 'utf-8'
+            });
+            res.end('Success!size: ' + thisSize + 'bytes , path: ' + targetFile);
         }
     });
 };

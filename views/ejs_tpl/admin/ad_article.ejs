@@ -1,5 +1,5 @@
 <% include header %>
-	<section>
+	<section class="ad_article">
 		<div class="toolbar">
             <a class="btn btn-green" href="/admin/article_edit">添加文章</a>
             <a id="categoryAdd" class="btn btn-green" href="#categoryBox" title="Add category">添加分类</a>
@@ -54,6 +54,7 @@
                 </tbody>
             </table>
         </div>
+        <% include ../paging-block %>
 	</section>
 	<% include ad-fancy-box-block %>
 <% include footer %>

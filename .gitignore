@@ -1,8 +1,16 @@
 *.swp
+
 *.bak
+
 *~
 ~*
-*Thumbs.db
+*
+Thumbs.db
+
 *.tar.gz
+
 logs/*
+
 .idea
+
+public/KE/attached

@@ -175,7 +175,8 @@ nav a {
     text-shadow: -1px 0 1px #DDDDDD;
 }
 .index,
-.post {
+.post,
+.ad_article {
     padding-top: 10px;
     padding-bottom:10px;
 }
