@@ -4,6 +4,9 @@
 	<% include article-info-block %>
 	<div class="summry">
 		<%- article.summry %>
+		<div class="more">
+		    <a href="/article/<%= article._id %>" title="查看详细">[查看详细...]</a>
+        </div>
 	</div>
 </div>
 <% })}else{ %>
