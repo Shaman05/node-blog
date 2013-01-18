@@ -6,7 +6,6 @@ var express = require('express'),
     app = express(),
     http = require('http'),
     server = http.createServer(app),
-    io = require('socket.io').listen(server),
     socket = require('./models/socket'),
     path = require('path'),
     router = require('./routes'),
@@ -42,7 +41,7 @@ app.configure('development', function(){
 app.get('/install', install.routeInstall);
 router(app);
 
-socket.socketStart();
+socket.socketStart(server);
 
 server.listen(app.get('port'), function(){
     console.log("Express server listening on port " + app.get('port'));

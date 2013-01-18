@@ -30,7 +30,7 @@
     $("#enter").click(function(){
         var iptVal = $.trim($("#name").val());
         name = !!iptVal ? iptVal : null;
-        name != defaultVal && goChat();
+        name && name != defaultVal && goChat();
     })
 
     function goChat(){
