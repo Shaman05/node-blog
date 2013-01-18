@@ -11,6 +11,7 @@
         defaultVal = "请输入昵称",
         name = null;
     var chatContent = $(".chatcontent"),
+        connInfo = $("#conn-info"),
         userList = $("#userlist"),
         chatList = $("#chatlist"),
         sendBtn = $("#send"),
@@ -45,7 +46,8 @@
 
         socket.on("connect", function(){
             socket.send(JSON.stringify(data));
-            chatList.append($('<li>已连接。</li>'));
+            connInfo.text("已连接。");
+            dataArea.attr("disabled", false);
 
             socket.on("message", function(data){
                 var d = JSON.parse(data);

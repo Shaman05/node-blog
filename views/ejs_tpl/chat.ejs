@@ -33,10 +33,12 @@
     <div style="display:none" id="chatbox">
         <div class="chatright">
             <h4>欢迎使用简易在线聊天室，本聊天室是基于nodejs + socket.io构建。 <a href="/lab">返回</a></h4>
+            <p id="conn-info">正在连接到聊天服务器，请稍后...</p>
             <div class="chatcontent">
                 <ul id="chatlist"></ul>
             </div>
-            <div class="sendbox"><textarea id="senddata"></textarea>
+            <div class="sendbox">
+                <textarea id="senddata" disabled></textarea>
                 <button id="send">发送消息<br>Ctrl+Enter</button>
             </div>
         </div>
