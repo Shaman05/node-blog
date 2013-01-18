@@ -19,6 +19,8 @@ module.exports = function(app){
     app.get('/category/:category', routes.artList);
     app.get('/article/:id', routes.artShow);
     app.get('/archives', routes.archives);
+    app.get('/lab', routes.lab);
+    app.get('/chat', routes.chat);
 
     //admin
     app.get('/admin/logout', routes.logout);

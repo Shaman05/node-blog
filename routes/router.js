@@ -107,6 +107,20 @@ exports.archives = function(req, res){
     });
 };
 
+exports.lab = function(req, res){
+    res.render('lab', {
+        title: '瞎折腾',
+        siteData: siteData,
+        isLogin: req.session.user ? true : false
+    });
+};
+
+exports.chat = function(req, res){
+    res.render('chat', {
+        title: '简易聊天室'
+    });
+};
+
 //admin routes
 exports.ad_index = function(req, res){
     res.render('admin/ad_index', {

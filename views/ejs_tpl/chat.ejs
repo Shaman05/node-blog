@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title>New Html file</title>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+<div class="content">
+    <div id="setname"><input type="text" value="请输入昵称" id="name"><a href="javascript:" id="enter" class="btn btn-green">进入聊天室</a></div>
+    <div style="display:none" id="chatbox">
+        <div class="chatright"><h4>欢迎使用简易在线聊天室，本聊天室是基于nodejs + socket.io构建.</h4>
+
+            <div class="chatcontent">
+                <ul id="chatlist"></ul>
+            </div>
+            <div class="sendbox"><textarea id="senddata"></textarea>
+                <button id="send">发送消息<br>Ctrl+Enter</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/js/jquery.js"></script>
+<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+<script type="text/javascript" src="/js/chat.js"></script>
+</body>
+</html>

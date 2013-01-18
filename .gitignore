@@ -1,16 +1,3 @@
-*.swp
-
-*.bak
-
-*~
-~*
-*
-Thumbs.db
-
-*.tar.gz
-
-logs/*
-
 .idea
 
 public/KE/attached
