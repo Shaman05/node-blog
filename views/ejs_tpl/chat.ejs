@@ -6,28 +6,11 @@
     <meta name="keywords" content="">
     <title><%= title %></title>
     <link type="text/css" rel="stylesheet" href="/stylesheets/style.css">
-    <style type="text/css">
-    .chat-box{min-height: 400px; padding: 20px; border: 1px solid gray; overflow: hidden; zoom:1; width: 504px; margin: 50px auto; background: #FFF}
-    .chat-box h3,.chatright h4{margin: 0 0 12px; color: #ff8a0d;}
-    .memberlist{width: 120px; height: 400px; padding: 2px; margin-right: 20px; border: 1px solid #CCCCCC; background: #DEDEDE; overflow-x: hidden; overflow-y: auto;}
-    .chatcontent{height: 330px; padding: 4px; margin-bottom: 13px; overflow-y: auto;}
-    .chatcontent ul{padding:0; }
-    .chatcontent ul li{padding: 2px 0; line-height: 18px; list-style:none}
-    .chatcontent ul li em,.chatcontent ul li span, .chatcontent ul li strong{font-weight: bold; font-style: normal}
-    .chatcontent ul li em{color: red;}
-    .chatcontent ul li span{color: blue;}
-    .chatcontent ul li strong{color: green; padding-left: 4px}
-    .chatcontent .txt,.chatcontent .mytxt{margin: 2px 24px 5px; padding:4px 8px; border-width:1px; border-style:solid; border-radius:4px; box-shadow: 4px 2px 6px #C3C1C4}
-    .chatcontent .txt{border-color:#c3c1c4; background: #ebecf0}
-    .chatcontent .mytxt{border-color:#b6cbdc; background: #b3dcfc}
-    .sendbox textarea{height: 50px; width: 418px; min-height: 50px; min-width: 418px; max-width: 418px; padding: 0; border: 1px solid #CCCCCC; vertical-align: bottom; font-size: 12px; color: #434343}
-    .sendbox button{height: 52px; width: 80px; background: #ECECEC; vertical-align: bottom;}
-    </style>
 </head>
 <body style="background:#EFEFEF; overflow:hidden">
 <div class="chat-box">
     <div id="setname">
-        <input type="text" value="请输入昵称" id="name">
+        <input type="text" value="请输入昵称" id="name" onfocus="javascript:this.value=''">
         <a href="javascript:" id="enter" class="btn btn-green">进入聊天室</a>
     </div>
     <div style="display:none" id="chatbox">
