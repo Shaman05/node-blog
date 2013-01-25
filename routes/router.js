@@ -197,6 +197,16 @@ exports.upload_img = function(req, res){
     });
 };
 
+exports.fileEdit = function(req, res){
+    res.render('admin/ad_fileEdit', {
+        title: '管理文件',
+        dir: {
+            root: sys.site.root,
+            tpldir: sys.site.viewDir
+        }
+    });
+};
+
 //ajax api
 exports.login = function(req, res){
     ajax.login(req.body, function(resJson){
@@ -229,6 +239,22 @@ exports.artEdit = function(req, res){
 exports.categoryAdd = function(req, res){
     ajax.categoryAdd(req.body.category, function(resJson){
         res.json(resJson);
+    });
+};
+
+exports.getToc = function(req, res){
+    var dir = req.query.dir;
+    ajax.getToc(dir, function(data){
+        res.render('admin/toc-block', {
+            tocData: data
+        });
+    });
+};
+
+exports.getDocument = function(req, res){
+    var filename = req.query.filename;
+    ajax.getDocument(filename, function(data){
+        res.json(data);
     });
 };
 

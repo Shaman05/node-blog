@@ -10,6 +10,8 @@ var mongo = require('../node_modules/mongodb');
 var db = require('./db');
 var crypto = require('crypto');
 var util = require('./util');
+var sys = require('./sys');
+var fs = require('fs');
 
 module.exports = {
     login: function(user, callback){
@@ -115,5 +117,43 @@ module.exports = {
                 })
             });
         });
+    },
+
+    getToc: function(dir, callback){
+        var resJSON = {
+            queryDir: dir,
+            folder: [],
+            document: []
+        };
+        fs.readdir(dir, function(err, files){
+            for(var i = 0, len = files.length; i < len; i++){
+                var pathname = dir + "\\" + files[i];
+                var stat = fs.lstatSync(pathname);
+                if (!stat.isDirectory()){
+                    var a = files[i].split('.');
+                    resJSON.document.push({type:a[a.length-1],name:files[i]});
+                } else {
+                    resJSON.folder.push(files[i]);
+                }
+            }
+            callback(resJSON);
+        });
+    },
+
+    getDocument: function(filename, callback){
+        var resJSON = {
+            statu: 'success',
+            content: null
+        };
+        fs.readFile(filename, 'utf-8', function(err, content){
+            if(err){
+                resJSON.statu = 'failed';
+                resJSON.err = err;
+            }else{
+                resJSON.content = content;
+            }
+            callback(resJSON);
+        });
+
     }
 };

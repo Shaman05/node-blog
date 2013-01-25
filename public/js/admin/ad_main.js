@@ -13,6 +13,24 @@ define(function(require, exports, module){
         init: function(){
             this.events();
             $("#categoryAdd").fancybox();
+            $("#fileShowBtn,#tplShowBtn").fancybox({
+                maxWidth	: 800,
+                maxHeight	: 600,
+                fitToView	: false,
+                width		: '50%',
+                height		: '70%',
+                autoSize	: false,
+                beforeLoad: function(){
+                    $.fancybox.showLoading();
+                },
+                afterLoad: function(){
+                    var path = $(this.element).attr("data-path");
+                    $.get('/admin/getToc?dir=' + path, function(tocHtml){
+                        $.fancybox.hideLoading();
+                        $('#dirWrap').html(tocHtml);
+                    })
+                }
+            });
         },
 
         events: function(){
@@ -58,6 +76,16 @@ define(function(require, exports, module){
                 if(!newCategory) return;
                 $.post('/admin/category_add', {category: newCategory} ,function(data){
                     tipsBox.html(data.message).fadeIn(500);
+                });
+            });
+
+            $('.edit-file').live('click',function(){
+                var filename = $(this).attr("data-path");
+                $.get('/admin/getDocument?filename=' + filename, function(data){
+                    if(data.statu == 'success'){
+                        $("#fileEditArea").val(data.content);
+                        $.fancybox.close();
+                    }
                 });
             });
         }

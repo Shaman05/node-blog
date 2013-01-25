@@ -1,0 +1,12 @@
+<% if(tocData.folder.length > 0 || tocData.document.length > 0){ %>
+    <ul>
+        <% tocData.folder.forEach(function(folder, index){ %>
+        <li><%= folder %></li>
+        <% }) %>
+        <% tocData.document.forEach(function(doc, index){ %>
+        <li><%= doc.name %> , type : <%= doc.type %> <a href="javascript:" title="编辑文件" class="edit-file" data-path="<%= tocData.queryDir %>\<%= doc.name %>">edit</a></li>
+        <% }) %>
+    </ul>
+<% }else{ %>
+    <p>空的目录</p>
+<% } %>

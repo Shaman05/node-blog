@@ -33,10 +33,13 @@ module.exports = function(app){
     app.get('/admin/article_edit/:id', routes.checkLogin);
     app.get('/admin/article_edit/:id', routes.ad_article_edit);
     app.post('/KE/upload_img', routes.upload_img);
+    app.get('/admin/fileEdit', routes.fileEdit);
 
     //ajax
     app.post('/ajax/login', routes.login);
     app.post('/ajax/article_del', routes.artDel);
     app.post('/ajax/article_edit', routes.artEdit);
     app.post('/admin/category_add', routes.categoryAdd);
+    app.get('/admin/getToc', routes.getToc);
+    app.get('/admin/getDocument', routes.getDocument);
 };
