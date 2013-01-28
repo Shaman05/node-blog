@@ -6,6 +6,9 @@
  * To change this template use File | Settings | File Templates.
  */
 
+var fs = require('fs');
+var size = 0;
+
 module.exports = {
     getPubYear: function(pubtime){
         return parseInt(pubtime.split('-')[0]);
@@ -36,5 +39,27 @@ module.exports = {
 
     transformSummry: function(content){
         return content.split('[[split]]')[0];
+    },
+
+    getDirSize: function(path){
+        if(!fs.existsSync(path))
+            return size;
+        var stat = fs.lstatSync(path);
+        if(stat.isDirectory()){
+            var files = fs.readdirSync(path);
+            files.forEach(function(file, index){
+                var currentFile = path + '/'  + file;
+                var stat = fs.lstatSync(currentFile);
+                if(stat.isDirectory()){
+                    module.exports.getDirSize(currentFile);
+                }else{
+                    size += fs.lstatSync(currentFile).size;
+                }
+            });
+        }else{
+            size += fs.lstatSync(path).size;
+        }
+        return size;
     }
+
 };
