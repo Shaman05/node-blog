@@ -120,18 +120,26 @@ module.exports = {
     },
 
     getToc: function(dir, callback){
+        //console.log(dir)
         var resJSON = {
             queryDir: dir,
+            parentDir: dir.split('/').slice(0, -1).join('/'),
             folder: [],
             document: []
         };
         fs.readdir(dir, function(err, files){
+            if(err){
+                resJSON.err = err;
+                callback(resJSON);
+                return;
+            }
             for(var i = 0, len = files.length; i < len; i++){
-                var pathname = dir + "\\" + files[i];
+                var pathname = dir + "\/" + files[i];
                 var stat = fs.lstatSync(pathname);
                 if (!stat.isDirectory()){
                     var a = files[i].split('.');
-                    resJSON.document.push({type:a[a.length-1],name:files[i]});
+                    var date = stat.atime;  //这行报错
+                    resJSON.document.push({type:a[a.length-1],name:files[i],size:stat.size,lastModfied:date});
                 } else {
                     resJSON.folder.push(files[i]);
                 }

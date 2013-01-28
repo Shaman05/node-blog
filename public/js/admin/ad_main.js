@@ -88,6 +88,14 @@ define(function(require, exports, module){
                     }
                 });
             });
+
+            $('.enter-folder').live('click',function(){
+                var path = $(this).attr("data-path");
+                $.get('/admin/getToc?dir=' + path, function(tocHtml){
+                    $.fancybox.hideLoading();
+                    $('#dirWrap').html(tocHtml);
+                })
+            });
         }
     }
 });

@@ -26,7 +26,7 @@ module.exports = (function(){
         site: {
             port: process.env.PORT || config.port,
             root: formatDir(config.appRoot),
-            staticDir: formatDir(config.appRoot + '\\' + config.staticPath),
+            staticDir: formatDir(config.appRoot + '\/' + config.staticPath),
             viewEngine: config.viewEngine,
             viewDir: formatDir(config.viewsDir)
         }
@@ -34,5 +34,5 @@ module.exports = (function(){
 })();
 
 function formatDir(dir){
-    return dir.replace(/\//g, '\\');
+    return dir.replace(/\\/g, '/');
 }

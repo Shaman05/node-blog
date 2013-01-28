@@ -11,8 +11,11 @@ var util = require('../models/util');
 var size = 0;
 
 function getDirSize(path){
-    if(!fs.existsSync(path))
+    console.log(path)
+    if(!fs.existsSync(path)){
+        console.log(11111111)
         return size;
+    }
     var stat = fs.lstatSync(path);
     if(stat.isDirectory()){
         var files = fs.readdirSync(path);
@@ -26,9 +29,10 @@ function getDirSize(path){
             }
         });
     }else{
+        console.log(22222222222)
         size += fs.lstatSync(path).size;
     }
     return size;
 }
 
-console.log(util.getDirSize(__dirname) + 'Bytes.');
+console.log(util.getDirSize('./a.html')() + 'Bytes.');
