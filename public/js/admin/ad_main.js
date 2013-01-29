@@ -81,13 +81,22 @@ define(function(require, exports, module){
 
             var editArea = $('#fileEditArea');
             $('.edit-file').live('click',function(){
-                var filename = $(this).attr("data-path");
+                var _this = $(this);
+                var filename = _this.attr("data-path");
                 $.get('/admin/getDocument?filename=' + filename, function(data){
                     if(data.statu == 'success'){
                         editArea
                             .attr('data-path',filename)
                             .val(data.content);
                         $.fancybox.close();
+                        var type = _this.attr('data-type');
+                        editAreaLoader.openFile('fileEditArea', {
+                            id: 'edit_file_' + new Date().getTime(),
+                            title: filename,
+                            text: data.content,
+                            syntax: type,
+                            start_highlight: true
+                        });
                     }
                 });
             });
@@ -101,13 +110,13 @@ define(function(require, exports, module){
             });
 
             $('#submitFile').click(function(){
-                var content = editArea.val();
                 var filename = editArea.attr('data-path');
                 if(!filename){
                     alert('尚未选取文件！');
                     return;
                 }
-                $.post('/admin/modifyFile', {content:content, filename:filename}, function(data){
+                var currentFile = editAreaLoader.getCurrentFile('fileEditArea');
+                $.post('/admin/modifyFile', {content:currentFile.text, filename:currentFile.title}, function(data){
                     alert(data.statu);
                     if(data.statu == 'success'){
                         editArea.val('');

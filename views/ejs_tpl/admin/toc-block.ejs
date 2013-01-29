@@ -40,7 +40,7 @@
             <% tocData.document.forEach(function(doc, index){ %>
             <tr>
                 <td><%= doc.type %></td>
-                <td><a href="javascript:" title="编辑文件" class="edit-file" data-path="<%= tocData.queryDir %>/<%= doc.name %>"><%= doc.name %></a></td>
+                <td><a href="javascript:" title="编辑文件" class="edit-file" data-path="<%= tocData.queryDir %>/<%= doc.name %>" data-type="<%= doc.type %>"><%= doc.name %></a></td>
                 <td><%= doc.lastModfied %></td>
                 <td><%= Math.ceil(doc.size/1024) %>KB</td>
             </tr>

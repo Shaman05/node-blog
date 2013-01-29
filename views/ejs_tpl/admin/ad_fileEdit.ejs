@@ -9,14 +9,23 @@
 
             </div>
             <div class="right-wrap">
-                <textarea class="file-edit-area" id="fileEditArea" data-path=''>
-
-                </textarea>
+                <textarea class="file-edit-area" id="fileEditArea" data-path=''>file content</textarea>
                 <div class="toolbar">
                     <a id="submitFile" class="btn btn-green" href="javascript:">提交修改</a>
                 </div>
             </div>
         </div>
+        <script type="text/javascript" src="/edit_area/edit_area_full.js"></script>
+        <script language="javascript" type="text/javascript">
+            document.getElementById('fileEditArea').value = 'To select file open in here.';
+            var file_id = null; //this id flag is only for edit area plug which file opened.
+            editAreaLoader.init({
+                id : "fileEditArea"
+                ,syntax: "js"
+                ,toolbar: "search, go_to_line, |, undo, redo, |, select_font, |, syntax_selection, |, change_smooth_selection, highlight, reset_highlight, |, help"
+                ,start_highlight: true
+            });
+        </script>
 	</section>
 	<% include ad-fancy-box-block %>
 <% include footer %>

@@ -431,6 +431,7 @@ footer {
 }
 .file-edit-area {
     min-width: 800px;
+    width: 80%;
     min-height: 400px;
 }
 .toc-box {
