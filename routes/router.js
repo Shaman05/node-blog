@@ -258,6 +258,14 @@ exports.getDocument = function(req, res){
     });
 };
 
+exports.modifyFile = function(req, res){
+    var content = req.body.content;
+    var filename = req.body.filename;
+    ajax.modifyFile(content, filename,function(data){
+        res.json(data);
+    });
+};
+
 //check
 exports.checkLogin = function(req, res, next){
     if(!req.session.user){

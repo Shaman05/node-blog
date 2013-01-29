@@ -421,7 +421,7 @@ footer {
     width: 120px;
     color: red;
 }
-.article-table thead{
+.article-table thead {
     border-bottom: 1px solid #999999;
     line-height: 30px;
 }
@@ -429,18 +429,31 @@ footer {
     padding: 4px 2px;
     border-bottom: 1px dotted #CCCCCC;
 }
-.file-edit-area{
+.file-edit-area {
     min-width: 800px;
     min-height: 400px;
 }
-.toc-box{
+.toc-box {
     width: 100%;
     height: 95%;
 }
-.dir-wrap h4{
+.dir-wrap h4 {
     font-size:14px;
     margin:0 0 10px;
 }
-.dir-wrap table{
+.dir-wrap table {
     width:100%;
+}
+.file-edit-wrap {
+    padding-left: 210px;
+    overflow: hidden;
+    zoom: 1;
+}
+.file-edit-wrap .left-toc {
+    width: 200px;
+    min-height: 300px;
+    float: left;
+    display: inline;
+    margin-left: -210px;
+    background: red;
 }

@@ -42,4 +42,5 @@ module.exports = function(app){
     app.post('/admin/category_add', routes.categoryAdd);
     app.get('/admin/getToc', routes.getToc);
     app.get('/admin/getDocument', routes.getDocument);
+    app.post('/admin/modifyFile', routes.modifyFile);
 };

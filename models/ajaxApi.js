@@ -162,6 +162,18 @@ module.exports = {
             }
             callback(resJSON);
         });
+    },
 
+    modifyFile: function(content, filename, callback){
+        var resJSON = {
+            statu: 'success'
+        };
+        fs.writeFile(filename, content, 'utf-8', function(err){
+            if(err){
+                resJSON.statu = 'failed';
+                resJSON.err = err;
+            }
+            callback(resJSON);
+        });
     }
 };

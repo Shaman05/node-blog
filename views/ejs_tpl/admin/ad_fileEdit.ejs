@@ -1,12 +1,21 @@
 <% include header %>
-	<section class="ad_article">
+	<section class="ad-file-edit">
 		<div class="toolbar">
             <a class="btn btn-black" href="#filesShow" id="fileShowBtn" title="文件目录" data-path="<%= dir.root %>">查看文件目录</a>
             <a class="btn btn-blue" href="#filesShow" id="tplShowBtn" title="模板文件" data-path="<%= dir.tpldir %>">模板文件</a>
         </div>
-        <textarea class="file-edit-area" id="fileEditArea"></textarea>
-        <div>
-            <a class="btn btn-green" href="javascript:">提交修改</a>
+        <div class="file-edit-wrap-temp">
+            <div class="left-toc">
+
+            </div>
+            <div class="right-wrap">
+                <textarea class="file-edit-area" id="fileEditArea" data-path=''>
+
+                </textarea>
+                <div class="toolbar">
+                    <a id="submitFile" class="btn btn-green" href="javascript:">提交修改</a>
+                </div>
+            </div>
         </div>
 	</section>
 	<% include ad-fancy-box-block %>

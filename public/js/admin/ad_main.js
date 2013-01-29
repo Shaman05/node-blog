@@ -79,11 +79,14 @@ define(function(require, exports, module){
                 });
             });
 
+            var editArea = $('#fileEditArea');
             $('.edit-file').live('click',function(){
                 var filename = $(this).attr("data-path");
                 $.get('/admin/getDocument?filename=' + filename, function(data){
                     if(data.statu == 'success'){
-                        $("#fileEditArea").val(data.content);
+                        editArea
+                            .attr('data-path',filename)
+                            .val(data.content);
                         $.fancybox.close();
                     }
                 });
@@ -94,7 +97,22 @@ define(function(require, exports, module){
                 $.get('/admin/getToc?dir=' + path, function(tocHtml){
                     $.fancybox.hideLoading();
                     $('#dirWrap').html(tocHtml);
-                })
+                });
+            });
+
+            $('#submitFile').click(function(){
+                var content = editArea.val();
+                var filename = editArea.attr('data-path');
+                if(!filename){
+                    alert('尚未选取文件！');
+                    return;
+                }
+                $.post('/admin/modifyFile', {content:content, filename:filename}, function(data){
+                    alert(data.statu);
+                    if(data.statu == 'success'){
+                        editArea.val('');
+                    }
+                });
             });
         }
     }
