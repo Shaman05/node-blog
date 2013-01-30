@@ -14,6 +14,18 @@ var sys = require('./sys');
 var fs = require('fs');
 
 module.exports = {
+    createAdmin: function(name, password, callback){
+        var md5 = crypto.createHash('md5');
+        var pwd =  md5.update(password).digest('base64');
+        db.open(function(){
+            db.collection('users', function(err, collection){
+                collection.insert({name:name,password:pwd}, function(err){
+                    callback(err);
+                })
+            });
+        });
+    },
+
     login: function(user, callback){
         var md5 = crypto.createHash('md5');
         var name = user.name;
@@ -138,10 +150,20 @@ module.exports = {
                 var stat = fs.lstatSync(pathname);
                 if (!stat.isDirectory()){
                     var a = files[i].split('.');
-                    var date = stat.atime;  //这行报错
-                    resJSON.document.push({type:a[a.length-1],name:files[i],size:stat.size,lastModfied:date});
+                    var date = stat.atime.toLocaleDateString();
+                    var docSize = util.formatSize(stat.size);
+                    resJSON.document.push({
+                        type: a[a.length-1],
+                        name: files[i],
+                        lastModfied: date,
+                        size: docSize
+                    });
                 } else {
-                    resJSON.folder.push(files[i]);
+                    //var fsize = util.formatSize(util.getDirSize(pathname)); //取消文件夹大小的输出
+                    resJSON.folder.push({
+                        name: files[i],
+                        size: '--'
+                    });
                 }
             }
             callback(resJSON);

@@ -12,12 +12,14 @@ body{
 </style>
 </head>
 <body>
-    <p>配置信息：</p>
-    <p>站点名称：<input type="text" name="master"></p>
-    <p>站点描述：<input type="text" name="description"></p>
-    <p>管理员名称：<input type="text" name="name"></p>
-    <p>管理员密码：<input type="password" name="password"></p>
-    <p>确认密码：<input type="password" name="rpassword"></p>
-    <p><input type="submit" value="开始安装"></p>
+    <form action="/install" method="post">
+        <p>配置信息：</p>
+        <p>站点名称：<input type="text" name="master"></p>
+        <p>站点描述：<input type="text" name="description"></p>
+        <p>管理员名称：<input type="text" name="admin"></p>
+        <p>管理员密码：<input type="password" name="password"></p>
+        <p>确认密码：<input type="password" name="rpassword"></p>
+        <p><input type="submit" value="开始安装"></p>
+    </form>
 </body>
 </html>

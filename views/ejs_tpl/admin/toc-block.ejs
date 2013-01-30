@@ -25,16 +25,16 @@
         <tbody>
             <tr>
                 <td>DIR</td>
-                <td><a href="javascript:" title="进入" class="enter-folder" data-path="<%= tocData.parentDir %>">Parent Directory</a></td>
+                <td><a href="javascript:" title="返回上一级" class="enter-folder" data-path="<%= tocData.parentDir %>">Parent Directory</a></td>
                 <td>--</td>
                 <td>--</td>
             </tr>
             <% tocData.folder.forEach(function(folder, index){ %>
             <tr>
                 <td>Dir</td>
-                <td><a href="javascript:" title="进入" class="enter-folder" data-path="<%= tocData.queryDir %>/<%= folder %>"><%= folder %></a></td>
+                <td><a href="javascript:" title="进入" class="enter-folder" data-path="<%= tocData.queryDir %>/<%= folder.name %>"><%= folder.name %></a></td>
                 <td>--</td>
-                <td>--</td>
+                <td><%= folder.size %></td>
             </tr>
             <% }) %>
             <% tocData.document.forEach(function(doc, index){ %>
@@ -42,7 +42,7 @@
                 <td><%= doc.type %></td>
                 <td><a href="javascript:" title="编辑文件" class="edit-file" data-path="<%= tocData.queryDir %>/<%= doc.name %>" data-type="<%= doc.type %>"><%= doc.name %></a></td>
                 <td><%= doc.lastModfied %></td>
-                <td><%= Math.ceil(doc.size/1024) %>KB</td>
+                <td><%= doc.size %></td>
             </tr>
             <% }) %>
         </tbody>

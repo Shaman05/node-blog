@@ -9,7 +9,6 @@
     "express": "3.0.4",
     "ejs": ">= 0.8.3",
     "connect-mongo": ">= 0.1.7",
-    "mongodb" : ">= 0.9.9",
-    "markdown" : "0.4.0"
+    "mongodb" : ">= 0.9.9"
   }
 }

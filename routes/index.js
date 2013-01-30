@@ -21,6 +21,7 @@ module.exports = function(app){
     app.get('/archives', routes.archives);
     app.get('/lab', routes.lab);
     app.get('/chat', routes.chat);
+    app.post('/install', routes.install);
 
     //admin
     app.get('/admin/logout', routes.logout);

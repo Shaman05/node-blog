@@ -42,7 +42,8 @@ module.exports = {
 
     getDirSize: function(path){
         var size = 0;
-        return function(){
+        return _getDirSize(path);
+        function _getDirSize(path){
             if(!fs.existsSync(path))
                 return size;
             var stat = fs.lstatSync(path);
@@ -52,7 +53,7 @@ module.exports = {
                     var currentFile = path + '/'  + file;
                     var stat = fs.lstatSync(currentFile);
                     if(stat.isDirectory()){
-                        module.exports.getDirSize(currentFile);
+                        _getDirSize(currentFile);
                     }else{
                         size += fs.lstatSync(currentFile).size;
                     }
@@ -62,6 +63,28 @@ module.exports = {
             }
             return size;
         }
-    }
+    },
 
+    formatSize: function(size){
+        var kb = 1024;
+        var mb = kb * 1024;
+        var gb = mb * 1024;
+        var tb = gb * 1024;
+        if(size > tb){
+            return p2Number(size/tb) + 'TB';
+        }
+        if(size > gb){
+            return p2Number(size/gb) + 'GB';
+        }
+        if(size > mb){
+            return p2Number(size/mb) + 'MB';
+        }
+        if(size > kb){
+            return p2Number(size/kb) + 'KB';
+        }
+        return size + 'Bytes';
+        function p2Number(num){
+            return Math.ceil(num * 100)/100;
+        }
+    }
 };

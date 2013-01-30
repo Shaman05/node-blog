@@ -10,15 +10,40 @@ var article = require('../models/article');
 var ajax = require('../models/ajaxApi');
 var sys = require('../models/sys');
 var fs = require('fs');
-
-var siteData = {
-    master: 'Shaman',
-    description: '专注WEB前端开发',
-    power: 'Node-Blog',
-    powerUrl: 'http://github.com/Shaman05/node-blog'
-};
+var siteData = require('../install/siteData')();
 
 //front routes
+exports.install = function(req, res){
+    var siteInfo = req.body;
+    res.writeHead(200, {
+        'Content-Type': 'text/html',
+        'charset': 'utf-8'
+    });
+    for(var pro in siteInfo){
+        if(!siteInfo[pro]){
+            res.end('亲 , ' + pro + ' 信息不能为空.');
+            return;
+        }
+    }
+    if(siteInfo.password !== siteInfo.rpassword){
+        res.end('亲 , 两次密码输入不一致.');
+        return;
+    }
+    //修改站点信息
+    var text = fs.readFileSync('./install/siteData.js', 'utf8');
+    text = text.replace('{$master}', siteInfo.master).replace('{$description}', siteInfo.description);
+    fs.writeFileSync('./install/siteData.js', text, 'utf8');
+    //创建后台管理员
+    ajax.createAdmin(siteInfo.admin, siteInfo.password, function(err){
+        var html = '<h3>Success!</h3><p><a href="/">Go to the index page.</a></p>';
+        if(err){
+            html = '<h3>Failed!</h3><p><a href="/">Create admin error!</a></p>';
+        }
+        fs.appendFileSync('./install/install.lock', 'installed', 'utf8');
+        res.end(html);
+    });
+};
+
 exports.index = function(req, res){
     var sortBy = '_id';
     article.artList(sortBy, function(err, data){
