@@ -19,14 +19,21 @@ exports.install = function(req, res){
         'Content-Type': 'text/html',
         'charset': 'utf-8'
     });
+    var tipMap = {
+        master: '站点名称',
+        description: '站点描述',
+        admin: '管理员名称',
+        password: '管理员密码',
+        rpassword: '重复密码'
+    };
     for(var pro in siteInfo){
         if(!siteInfo[pro]){
-            res.end('亲 , ' + pro + ' 信息不能为空.');
+            res.end('亲 , <strong>' + tipMap[pro] + '</strong> 信息不能为空.' + '<p><a href="javascript:history.back(-1);">返回</a></p>');
             return;
         }
     }
     if(siteInfo.password !== siteInfo.rpassword){
-        res.end('亲 , 两次密码输入不一致.');
+        res.end('亲 , 两次密码输入不一致.' + '<p><a href="javascript:history.back(-1);">返回</a></p>');
         return;
     }
     //修改站点信息

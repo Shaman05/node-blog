@@ -5,3 +5,7 @@ public/KE/attached/
 test/
 
 node_modules/
+
+install/install.lock
+
+*.log

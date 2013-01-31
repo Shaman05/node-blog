@@ -1,25 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="description" content="">
-<meta name="keywords" content="">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
 <title>Node-blog 安装</title>
 <style type="text/css">
-body{
-    font-size: 12px;
-}
+    body{
+        font-size: 12px;
+    }
+    .text-right{
+        text-align: right;
+    }
 </style>
 </head>
 <body>
+    <h3>Node-blog 安装</h3>
+    <ol class="explain">
+        <li>这是一个简单的配置站点信息页面，通过安装配置，将初始化站点的基本信息。</li>
+        <li>站点基本信息（没有写入数据库）保存在 ./install/siteData.js 文件中。</li>
+        <li>后台管理员账户。</li>
+    </ol>
     <form action="/install" method="post">
-        <p>配置信息：</p>
-        <p>站点名称：<input type="text" name="master"></p>
-        <p>站点描述：<input type="text" name="description"></p>
-        <p>管理员名称：<input type="text" name="admin"></p>
-        <p>管理员密码：<input type="password" name="password"></p>
-        <p>确认密码：<input type="password" name="rpassword"></p>
-        <p><input type="submit" value="开始安装"></p>
+        <table>
+            <tbody>
+                <tr>
+                    <td class="text-right"><label for="master">站点名称：</label></td>
+                    <td><input type="text" name="master" /></td>
+                </tr>
+                <tr>
+                    <td class="text-right"><label for="description">站点描述：</label></td>
+                    <td><input type="text" name="description" /></td>
+                </tr>
+                <tr>
+                    <td class="text-right"><label for="admin">管理员名称：</label></td>
+                    <td><input type="text" name="admin" /></td>
+                </tr>
+                <tr>
+                    <td class="text-right"><label for="password">管理员密码：</label></td>
+                    <td><input type="password" name="password" /></td>
+                </tr>
+                <tr>
+                    <td class="text-right"><label for="rpassword">确认密码：</label></td>
+                    <td><input type="password" name="rpassword" /></td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td><input type="submit" value="开始安装"></td>
+                </tr>
+            </tbody>
+        </table>
     </form>
 </body>
 </html>

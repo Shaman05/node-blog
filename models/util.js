@@ -86,5 +86,12 @@ module.exports = {
         function p2Number(num){
             return Math.ceil(num * 100)/100;
         }
+    },
+
+    log: function(text, path){
+        var logFile = path || './node-blog.log';
+        if(fs.existsSync(logFile)){
+            fs.appendFile('\n' + new Date() + ':' + text + '\n');
+        }
     }
 };

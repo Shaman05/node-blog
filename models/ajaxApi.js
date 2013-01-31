@@ -20,6 +20,9 @@ module.exports = {
         db.open(function(){
             db.collection('users', function(err, collection){
                 collection.insert({name:name,password:pwd}, function(err){
+                    if(err){
+                        util.log(err, './install/install.log');
+                    }
                     callback(err);
                 })
             });
