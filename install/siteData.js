@@ -8,8 +8,8 @@
 
 module.exports = function (){
     return {
-        master: 'qwe',
-        description: 'eqwe',
+        master: '{$master}',
+        description: '{$description}',
         power: 'Node-Blog',
         powerUrl: 'http://github.com/Shaman05/node-blog'
     }

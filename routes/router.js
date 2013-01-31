@@ -38,7 +38,7 @@ exports.install = function(req, res){
     }
     //修改站点信息
     var text = fs.readFileSync('./install/siteData.js', 'utf8');
-    text = text.replace('{$master}', siteInfo.master).replace('{$description}', siteInfo.description);
+    text = text.replace(siteData.master, siteInfo.master).replace(siteData.description, siteInfo.description);
     fs.writeFileSync('./install/siteData.js', text, 'utf8');
     //创建后台管理员
     ajax.createAdmin(siteInfo.admin, siteInfo.password, function(err){
@@ -46,7 +46,7 @@ exports.install = function(req, res){
         if(err){
             html = '<h3>Failed!</h3><p><a href="/">Create admin error!</a></p>';
         }
-        fs.appendFileSync('./install/install.lock', 'installed', 'utf8');
+        fs.appendFileSync('./install/install.lock', new Date() + ' : install locked. \n', 'utf8');
         res.end(html);
     });
 };

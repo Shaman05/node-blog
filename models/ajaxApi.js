@@ -23,6 +23,7 @@ module.exports = {
                     if(err){
                         util.log(err, './install/install.log');
                     }
+                    util.log('Installed :)', './install/install.log');
                     callback(err);
                 })
             });

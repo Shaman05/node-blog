@@ -91,7 +91,10 @@ module.exports = {
     log: function(text, path){
         var logFile = path || './node-blog.log';
         if(fs.existsSync(logFile)){
-            fs.appendFile('\n' + new Date() + ':' + text + '\n');
+            fs.appendFile(path, '\n' + new Date() + ':' + text + '\n', 'utf8', function(err){
+                if(err)
+                    throw err;
+            });
         }
     }
 };
