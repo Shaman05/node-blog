@@ -1,6 +1,6 @@
 {
   "name": "node-blog",
-  "version": "0.1",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "node app"
@@ -9,6 +9,7 @@
     "express": "3.0.4",
     "ejs": ">= 0.8.3",
     "connect-mongo": ">= 0.1.7",
-    "mongodb" : ">= 0.9.9"
+    "mongodb": ">= 0.9.9",
+    "socket.io": "0.9.13"
   }
 }
