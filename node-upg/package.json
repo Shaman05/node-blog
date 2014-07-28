@@ -1,0 +1,17 @@
+{
+  "name": "node-upg",
+  "version": "0.2.0",
+  "description": "UPG front-end tool",
+  "author": "Front-End development team of UPG Cloud Financing Department",
+  "email": "front-end@upg.cn",
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "bin": {
+    "upg": "./bin/upg"
+  },
+  "dependencies": {
+    "commander": "2.1.0",
+    "colors": "0.6.2"
+  }
+}
