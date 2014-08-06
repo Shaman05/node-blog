@@ -194,6 +194,9 @@ article .title {
     font-size: 16px;
     line-height: 32px;
 }
+article .text{
+    min-height: 380px;
+}
 article .text,
 .summry,
 .card {
@@ -291,11 +294,11 @@ footer {
 .footer-c {
     border-top: 1px solid #FFFFFF;
     overflow: hidden;
-    padding-top: 10px;
+    padding-top: 20px;
     color: #888A8A;
 }
-.footer-c a {
-    margin-left: 6px;
+.footer-c span{
+    margin-right: 6px;
 }
 .btn {
     display: inline-block;

@@ -1,5 +1,5 @@
 <div class="paging">
-    查询结果：共 <%= paging.total %> 条记录 , 每页 <%= paging.size %> 条 , 共 <%= paging.pages %> 页。
+    查询结果：共 <%= paging.total %> 条记录 , 每页 <%= paging.size %> 条 , 共 <%= paging.pages %> 页
     <ul class="pager">
         <%
             var html = [];
@@ -31,10 +31,7 @@
                     html.push('<li><a href="?p=' + paging.pages + '">Last</a></li>');
                 }
                 html = html.join('');
-            }else{
-                html = 'error!';
             }
-
         %>
         <%- html %>
     </ul>

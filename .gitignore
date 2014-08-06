@@ -11,3 +11,5 @@ install/install.lock
 *.log
 
 *.lock
+
+local-mongo.bat

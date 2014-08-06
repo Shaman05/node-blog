@@ -7,10 +7,11 @@
  */
 
 module.exports = function (){
-    return {
-        master: '{$master}',
-        description: '{$description}',
-        power: 'Node-Blog',
-        powerUrl: 'http://github.com/Shaman05/node-blog'
-    }
+  return {
+    master: '{$master}',
+    description: 'add a description for your site',
+    time: function(){
+      return new Date().getFullYear();
+    }()
+  }
 };
