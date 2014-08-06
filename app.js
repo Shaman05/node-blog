@@ -10,8 +10,7 @@ var express = require('express'),
   path = require('path'),
   router = require('./routes'),
   mongoStore = require('./node_modules/connect-mongo')(express),
-  config = require('./config'),
-  install = require('./install');
+  config = require('./config');
 
 app.configure(function(){
   app.set('port', process.env.PORT || config.port);
@@ -38,7 +37,6 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-app.get('/install', install.routeInstall);
 router(app);
 
 socket.socketStart(server);
